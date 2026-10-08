@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vivek साथी - AI Mentorship, Stories &amp; Youth Community</title>
+  <meta name="description" content="AI Mentorship powered by Swami Vivekananda's eternal stories, slogans, and baritone voice. Pure email verification, unique handles, and peer community support.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Rozha+One&family=Yatra+One&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('vivek_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="topNavbar">
+    <div class="brand" id="brandLogo" onclick="switchTab('mentorship')">
+      <img src="assets/logo.jpg" alt="Vivek साथी Official Logo" class="brand-logo-img" id="mainBrandLogo">
+      <div class="brand-text">
+        <h1 id="brandTitle">
+          <span class="title-latin" data-i18n="brand_title_latin">Vivek</span>
+          <span class="title-hindi" data-i18n="brand_title_hindi">साथी</span>
+        </h1>
+        <p id="brandSubtitle" data-i18n="brand_subtitle">AI Mentor &amp; Youth Sangam</p>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-tabs" aria-label="Main Navigation">
+      <button class="nav-tab-btn active" id="tabBtnMentorship" onclick="switchTab('mentorship')">
+        <span>🧘‍♂️</span> <span data-i18n="nav_mentorship">Vivek Vani (AI Mentor)</span>
+      </button>
+      <button class="nav-tab-btn" id="tabBtnCommunity" onclick="switchTab('community')">
+        <span>👥</span> <span data-i18n="nav_community">Youth Sangam</span>
+      </button>
+      <button class="nav-tab-btn" id="tabBtnStore" onclick="switchTab('store')">
+        <span>🪙</span> <span data-i18n="nav_store">Karma &amp; Pro Store</span>
+      </button>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <!-- Karma Badge -->
+      <div class="karma-badge" id="userKarmaBadge" onclick="switchTab('store')" title="Click to view Karma wallet">
+        <span>⚡</span>
+        <span class="karma-points" id="headerKarmaPoints">350 Karma</span>
+      </div>
+
+      <!-- Auth / User Portal Pill Button -->
+      <button class="auth-user-btn" id="authPortalNavBtn" onclick="handleAuthPortalClick()">
+        <span class="auth-user-avatar" id="navUserAvatar">🧘‍♂️</span>
+        <span id="navUserName" data-i18n="auth_btn_login">Login / Register</span>
+      </button>
+
+      <!-- Language Selector -->
+      <div class="lang-selector" id="langSelector">
+        <button class="lang-btn active" id="langBtnHinglish" onclick="setLanguage('hinglish')">Hinglish</button>
+        <button class="lang-btn" id="langBtnHindi" onclick="setLanguage('hindi')">हिंदी</button>
+        <button class="lang-btn" id="langBtnEnglish" onclick="setLanguage('english')">English</button>
+      </div>
+
+      <!-- Theme Toggle (Vedic Saffron & Gold Light / Cosmic Dark) -->
+      <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleTheme()" title="Switch Saffron & Gold Light / Cosmic Dark Theme">
+        <span class="theme-icon" id="themeToggleIcon">☀️</span>
+        <span class="theme-label" id="themeToggleLabel">Light</span>
+      </button>
+
+      <!-- Ambient Sound Toggle -->
+      <button class="sound-toggle-btn" id="ambientSoundBtn" onclick="toggleAmbientSound()" title="Toggle Meditative Ambient Sound">
+        🔔
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-wrapper">
+
+    <!-- Hero Banner with Official Logo Graphic & Slogan -->
+    <section class="hero-banner" id="heroBanner">
+      <button class="hero-collapse-toggle-btn" id="heroCollapseToggleBtn" onclick="toggleHeroCollapse()" title="Toggle Hero Banner View">⚡ Compact</button>
+      <div class="hero-content">
+        <div class="hero-pill">
+          <span class="dot"></span>
+          <span data-i18n="hero_pill">Swami Vivekananda NLP Wisdom Engine &amp; Voice AI</span>
+        </div>
+        <h2 class="hero-title" id="heroHeading">
+          <span class="gradient-text" data-i18n="hero_title_1">Arise, Awake!</span><br>
+          <span data-i18n="hero_title_2">Discover Divine Guidance for Every Dilemma.</span>
+        </h2>
+        <p class="hero-desc" data-i18n="hero_desc">
+          Share your life situation — our AI model provides authentic stories from Swami Vivekananda's life, empowering Sanskrit slogans, baritone voice guidance, and custom video storyboards. Help peers in the community to earn Karma points!
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <h4>100%</h4>
+            <p data-i18n="stat_free">1 Month Free Access</p>
+          </div>
+          <div class="stat-item">
+            <h4>18.4K+</h4>
+            <p data-i18n="stat_youth">Youth Mentored</p>
+          </div>
+          <div class="stat-item">
+            <h4>42,000+</h4>
+            <p data-i18n="stat_karma">Karma Points Earned</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-portrait-frame">
+          <img src="assets/logo.jpg" alt="Vivek साथी Official Emblem" class="hero-portrait-img" id="heroImage">
+        </div>
+        <div class="floating-badge badge-top">
+          <span>🎙️</span>
+          <div>
+            <strong data-i18n="badge_voice_title">Vivekananda Baritone Voice</strong>
+            <p style="font-size: 0.7rem; color: var(--gold-light);" data-i18n="badge_voice_sub">Authentic Stories &amp; Slogans</p>
+          </div>
+        </div>
+        <div class="floating-badge badge-bottom">
+          <span>🪙</span>
+          <div>
+            <strong data-i18n="badge_sangam_title">Unique Sangam Accounts</strong>
+            <p style="font-size: 0.7rem; color: var(--emerald-glow);" data-i18n="badge_sangam_sub">Unique @handles &amp; Karma</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 1: AI MENTORSHIP STUDIO (VIVEK VANI) -->
+    <section class="tab-content active" id="tabContentMentorship">
+      <div class="mentorship-grid">
+        
+        <!-- Input Form Card -->
+        <div class="input-card">
+          <div class="card-header-styled">
+            <div class="card-header-icon">💬</div>
+            <div>
+              <h3 data-i18n="form_title">Share Your Situation</h3>
+              <p style="font-size: 0.8rem; color: var(--text-muted);" data-i18n="form_subtitle">AI model provides guidance from Swami Vivekananda's stories &amp; slogans</p>
+            </div>
+          </div>
+
+          <!-- Quick Suggestion Chips -->
+          <div class="quick-prompts-label" data-i18n="quick_topics_label">Common Life Dilemmas:</div>
+          <div class="chips-cloud" id="quickChipsContainer">
+            <button class="prompt-chip" id="chip_fear" onclick="applyPresetPrompt('fear')" data-i18n="chip_fear">⚡ Fear of Failure &amp; Exam Anxiety</button>
+            <button class="prompt-chip" id="chip_discipline" onclick="applyPresetPrompt('discipline')" data-i18n="chip_discipline">📱 Phone Addiction / Low Focus</button>
+            <button class="prompt-chip" id="chip_breakup" onclick="applyPresetPrompt('breakup')" data-i18n="chip_breakup">💔 Rejection / Low Self-Esteem</button>
+            <button class="prompt-chip" id="chip_strength" onclick="applyPresetPrompt('strength')" data-i18n="chip_strength">🏋️ Physical &amp; Mental Weakness</button>
+            <button class="prompt-chip" id="chip_purpose" onclick="applyPresetPrompt('purpose')" data-i18n="chip_purpose">🧭 Finding Life Purpose &amp; Direction</button>
+          </div>
+
+          <!-- Situation Input Box -->
+          <div class="input-box-wrapper">
+            <textarea 
+              id="userSituationInput" 
+              class="situation-textarea" 
+              placeholder="e.g. 'I have been preparing for competitive exams for 2 years without success. Feeling overwhelmed by fear of failure and losing focus...'"
+              maxlength="600"
+              oninput="handleCharCount()"
+            ></textarea>
+            
+            <div class="input-actions-bar">
+              <span class="char-counter" id="charCountLabel">0 / 600</span>
+              <button class="mic-btn" id="voiceInputMicBtn" onclick="toggleSpeechRecognition()" title="Voice Input (Speech-to-Text)">
+                🎤
+              </button>
+            </div>
+          </div>
+
+          <!-- Submit CTA Button -->
+          <button class="action-cta-btn" id="generateGuidanceBtn" onclick="processSituationMentorship()">
+            <span>✨</span> <span data-i18n="btn_generate">Hear Swami ji's Story, Slogan &amp; Voice</span>
+          </button>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.85rem;">
+            <div class="guidance-guarantee" style="font-size: 0.76rem; color: var(--text-dim);">
+              <span>🛡️</span> <span data-i18n="guarantee_text">100% Confidential</span>
+            </div>
+            <button onclick="openVideoSettingsModal()" style="background: none; border: none; color: var(--gold-light); font-size: 0.76rem; cursor: pointer; text-decoration: underline;" data-i18n="api_settings_link">
+              ⚙️ Video &amp; Voice API Settings
+            </button>
+          </div>
+        </div>
+
+        <!-- Mentorship Output Showcase -->
+        <div class="output-card-wrapper" id="outputCardWrapper">
+          
+          <!-- State 1: Empty Initial Placeholder -->
+          <div class="empty-state-card" id="emptyGuidanceState" style="background: var(--bg-card); border: 1px dashed var(--border-gold); border-radius: var(--radius-xl); padding: 2.2rem 1.75rem; text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">🪷</div>
+            <h4 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff; margin-bottom: 0.5rem;" data-i18n="empty_title">
+              Your Guidance Will Manifest Here
+            </h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 440px; margin: 0 auto;" data-i18n="empty_desc">
+              Type your situation on the left or use the microphone. AI will generate an authentic story, Mahavakra slogan, baritone voice, and matched video capsule.
+            </p>
+          </div>
+
+          <!-- State 2: Processing State -->
+          <div class="processing-card" id="processingGuidanceState" style="display: none; background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: var(--radius-xl); padding: 3rem 2rem; text-align: center; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;">
+            <div style="width: 68px; height: 68px; border-radius: 50%; border: 3px solid rgba(212,175,55,0.2); border-top-color: var(--gold-primary); animation: spin 1.2s infinite linear; display: flex; align-items: center; justify-content: center;">
+              <span style="font-size: 1.8rem; color: var(--gold-light);">ॐ</span>
+            </div>
+            <div>
+              <h4 style="font-family: var(--font-heading); font-size: 1.25rem; color: #fff;" id="processingTitle" data-i18n="processing_title">
+                Consulting Swami Vivekananda's Teachings...
+              </h4>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem;" id="processingSubtitle" data-i18n="processing_desc">
+                NLP model running • Matching authentic story • Synthesizing baritone voice • Preparing video storyboard
+              </p>
+            </div>
+          </div>
+
+          <!-- State 3: Active Result Card -->
+          <div class="guidance-result-card" id="activeGuidanceResult">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+              <div class="result-badge" style="background: rgba(212, 175, 55, 0.15); border: 1px solid var(--border-gold); color: var(--gold-light); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.7rem; border-radius: var(--radius-full);">
+                <span>🔥</span> <span data-i18n="result_badge">Vivek Saarthi Guidance Capsule</span>
+              </div>
+              <span style="font-size: 0.76rem; color: var(--emerald-glow);" data-i18n="karma_awarded_tag">⚡ +10 Karma Awarded</span>
+            </div>
+
+            <!-- Swami Vivekananda's Matched Story Capsule -->
+            <div class="story-capsule-box">
+              <span class="story-badge" data-i18n="story_badge">📖 Swami Vivekananda's Real Story</span>
+              <h4 class="story-title-h4" id="resultStoryTitle">The Monkeys of Varanasi (Face the Brutes!)</h4>
+              <p class="story-body-p" id="resultStoryBody">Loading story...</p>
+              <div class="story-lesson-p" id="resultStoryLesson">
+                💡 <strong data-i18n="lesson_prefix">Life Lesson:</strong> Running away from fear only magnifies it. Confront challenges boldly!
+              </div>
+            </div>
+
+            <!-- Slogan & Mantra Box -->
+            <div class="slogan-highlight-box">
+              <div class="sanskrit-quote" id="resultSanskritQuote">
+                "नायमात्मा बलहीनेन लभ्यः। निर्भय बनो!"
+              </div>
+              <div class="translation-quote" id="resultTranslationQuote">
+                "Strength is life, weakness is death! Stand and face the storm fearlessly."
+              </div>
+            </div>
+
+            <!-- Audio Player Module -->
+            <div class="audio-capsule-module">
+              <div class="audio-header">
+                <div class="audio-meta">
+                  <img src="assets/logo.jpg" alt="Swami ji" class="swami-mini-avatar">
+                  <div>
+                    <h4 data-i18n="voice_title">Listen in Swami Vivekananda's Baritone Voice</h4>
+                    <p data-i18n="voice_subtitle">Deep Baritone AI Voice • Story Narration &amp; Slogan</p>
+                  </div>
+                </div>
+                <div class="audio-time-label" id="audioTimerDisplay">00:00 / 00:36</div>
+              </div>
+
+              <div class="audio-controls">
+                <button class="play-pause-circle-btn" id="voicePlayPauseBtn" onclick="toggleSwamiVoicePlayback()">
+                  ▶
+                </button>
+                <div class="canvas-waveform-container">
+                  <canvas id="audioVisualizerCanvas"></canvas>
+                </div>
+              </div>
+
+              <div class="subtitles-box" id="audioSubtitleTrack" style="background: rgba(255, 255, 255, 0.03); padding: 0.75rem 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--gold-light); font-style: italic; border-left: 2px solid var(--gold-primary);">
+                <span>🔊</span> <span id="activeSubtitleText">"Face the brutes! Confront your fears like a lion..."</span>
+              </div>
+            </div>
+
+            <!-- Vivek Vani Multi-Language HD Video Player Module -->
+            <div class="video-capsule-module" id="vivekVaniVideoModule">
+              
+              <!-- Video Topbar with Discourse Title, Language Audio Selector & Mode Toggle -->
+              <div class="video-capsule-topbar">
+                <div class="video-topbar-left">
+                  <span class="video-badge-pill">🎬 <strong id="videoThemeBadgeTitle">Vivek Vani HD Video</strong></span>
+                  <span class="video-topic-tag" id="videoTopicTag">⚡ Fear of Failure &amp; Tiger Courage</span>
+                </div>
+                <div class="video-topbar-right">
+                  <!-- Language Selector for Video Voiceover / Audio -->
+                  <div class="video-lang-pill-group" title="Select Video Voiceover Language">
+                    <span class="video-lang-icon">🎙️ Audio:</span>
+                    <button class="vlang-pill-btn active" id="vlangBtnHing" onclick="switchVideoLang('hinglish')">Hinglish</button>
+                    <button class="vlang-pill-btn" id="vlangBtnHi" onclick="switchVideoLang('hindi')">हिंदी</button>
+                    <button class="vlang-pill-btn" id="vlangBtnEn" onclick="switchVideoLang('english')">English</button>
+                  </div>
+                  <!-- Mode Switcher (Real HD Video vs Canvas Storyboard) -->
+                  <button class="video-mode-toggle-btn" id="videoModeToggleBtn" onclick="toggleVideoPlayerMode()" title="Toggle Real HD Video or Generative Canvas">
+                    <span id="videoModeIcon">🎨</span> <span id="videoModeLabel">Canvas Mode</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Main Video Stage (HTML5 Real MP4 Video + Canvas Fallback) -->
+              <div class="video-player-container" id="videoPlayerContainer">
+                <!-- 1. Real MP4 Video Element (with audio tracks) -->
+                <video id="vivekVaniRealVideo" 
+                       playsinline 
+                       preload="metadata" 
+                       controls 
+                       controlsList="nodownload"
+                       style="width: 100%; max-height: 330px; aspect-ratio: 16/9; background: #000; display: block; object-fit: contain;">
+                  <source id="realVideoSource" src="assets/videos/confidence_tiger_01_hing.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+
+                <!-- 2. Generative Kinetic Canvas (Accessible via Mode Switch) -->
+                <canvas id="aiVideoCanvas" style="display: none; width: 100%; max-height: 330px; aspect-ratio: 16/9; background: #000; object-fit: contain;"></canvas>
+
+                <!-- Canvas Control Bar (Active when in canvas mode) -->
+                <div class="video-control-bar" id="canvasControlBar" style="display: none;">
+                  <button class="video-btn" id="videoPlayPauseBtn" onclick="toggleVideoPlayback()">▶</button>
+                  <div class="video-progress-bar" id="videoProgressTrack" onclick="seekVideoProgress(event)">
+                    <div class="video-progress-filled" id="videoProgressFill"></div>
+                  </div>
+                  <span style="font-size: 0.75rem; color: #cbd5e1; font-family: monospace;" id="videoTimeTag">0:00 / 0:36</span>
+                  <button class="video-btn active-toggle" id="videoVoiceToggleBtn" onclick="toggleVideoVoiceNarration()" title="Mute/Unmute Swami Vivekananda Baritone Dictation">🔊 Voice ON</button>
+                  <button class="video-btn" onclick="restartVideoAnimation()" title="Replay">↺</button>
+                  <button class="video-btn" onclick="toggleVideoFullscreen()" title="Fullscreen">⛶</button>
+                </div>
+              </div>
+
+              <!-- Video Themes / Discourse Playlist Carousel -->
+              <div class="video-discourse-carousel-wrapper">
+                <div class="carousel-label">
+                  <span>📜 <strong>Wisdom Discourses (8 Multi-Lingual MP4 Katha Videos):</strong></span>
+                </div>
+                <div class="video-discourse-carousel" id="videoDiscourseCarousel">
+                  <button class="vdisc-chip active" id="vchip_fear_courage" onclick="selectVideoTheme('fear_courage')">
+                    ⚡ Fear &amp; Courage
+                  </button>
+                  <button class="vdisc-chip" id="vchip_focus_discipline" onclick="selectVideoTheme('focus_discipline')">
+                    📱 Focus &amp; Study
+                  </button>
+                  <button class="vdisc-chip" id="vchip_stress_calm" onclick="selectVideoTheme('stress_calm')">
+                    🧘 Stress &amp; Calm
+                  </button>
+                  <button class="vdisc-chip" id="vchip_rejection_heartbreak" onclick="selectVideoTheme('rejection_heartbreak')">
+                    💔 Heartbreak &amp; Healing
+                  </button>
+                  <button class="vdisc-chip" id="vchip_anger_patience" onclick="selectVideoTheme('anger_patience')">
+                    🔥 Anger &amp; Patience
+                  </button>
+                  <button class="vdisc-chip" id="vchip_health_vitality" onclick="selectVideoTheme('health_vitality')">
+                    🏋️ Health &amp; Vitality
+                  </button>
+                  <button class="vdisc-chip" id="vchip_money_growth" onclick="selectVideoTheme('money_growth')">
+                    💰 Career &amp; Wealth
+                  </button>
+                  <button class="vdisc-chip" id="vchip_loneliness_connection" onclick="selectVideoTheme('loneliness_connection')">
+                    🌌 Loneliness &amp; Grief
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Result Actions -->
+            <div style="display: flex; gap: 0.85rem; margin-top: 1.5rem;">
+              <button class="secondary-pill-btn" onclick="saveWisdomToJournal()" style="flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-gold); color: #fff; padding: 0.65rem 1rem; border-radius: var(--radius-md); font-weight: 600; cursor: pointer;">
+                <span>🔖</span> <span data-i18n="btn_save_journal">Save to Journal</span>
+              </button>
+              <button class="secondary-pill-btn" onclick="shareWisdomToSangam()" style="flex: 1; background: rgba(212, 175, 55, 0.15); border: 1px solid var(--gold-primary); color: var(--gold-light); padding: 0.65rem 1rem; border-radius: var(--radius-md); font-weight: 600; cursor: pointer;">
+                <span>🌐</span> <span data-i18n="btn_share_community">Share in Youth Sangam</span>
+              </button>
+              <button class="secondary-pill-btn" onclick="copyWisdomQuote()" style="flex: 1; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255,255,255,0.15); color: #fff; padding: 0.65rem 1rem; border-radius: var(--radius-md); font-weight: 600; cursor: pointer;">
+                <span>📋</span> <span data-i18n="btn_copy">Copy Slogan</span>
+              </button>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- 🎯 PERSONALIZED ACTION PLAN & COGNITIVE SHIFT -->
+            <!-- ========================================== -->
+            <div class="action-plan-container" id="actionPlanContainer" style="margin-top: 1.75rem; background: rgba(11, 26, 48, 0.7); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 1.5rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                  <span style="font-size: 1.25rem;">🎯</span>
+                  <h4 style="font-family: var(--font-heading); color: #fff; margin: 0; font-size: 1.15rem;" data-i18n="action_plan_heading">Personalized Guidance &amp; Action Plan</h4>
+                </div>
+                <span style="font-size: 0.75rem; background: rgba(212, 175, 55, 0.15); border: 1px solid var(--border-gold); color: var(--gold-light); padding: 0.2rem 0.6rem; border-radius: var(--radius-full); font-weight: 700;">VivekSaarthi Action Engine</span>
+              </div>
+
+              <!-- Mindset Shift Banner -->
+              <div class="mindset-shift-box" id="mindsetShiftBox" style="background: linear-gradient(135deg, rgba(255, 115, 0, 0.12), rgba(212, 175, 55, 0.12)); border-left: 3px solid var(--saffron-primary); padding: 1rem 1.2rem; border-radius: var(--radius-sm); margin-bottom: 1.25rem;">
+                <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--gold-light); font-weight: 700; margin-bottom: 0.25rem;">🧠 Cognitive Reframing</div>
+                <p id="mindsetShiftText" style="color: #f1f5f9; font-size: 0.95rem; font-weight: 500; margin: 0; line-height: 1.5;">
+                  "Failure ko identity mat banao. Galti identify karo aur action par wapas aao."
+                </p>
+              </div>
+
+              <!-- 5 Concrete Action Steps Grid -->
+              <div style="margin-bottom: 1.5rem;">
+                <div style="font-size: 0.85rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.4rem;">
+                  <span>⚡</span> <span>What You Should Do Right Now (5 Concrete Steps):</span>
+                </div>
+                <div class="action-steps-grid" id="actionStepsGrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.75rem;">
+                  <!-- Dynamically populated -->
+                </div>
+              </div>
+
+              <!-- Your Next 24 Hours Interactive Checklist -->
+              <div class="next-24h-box" style="background: rgba(5, 11, 22, 0.6); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: var(--radius-md); padding: 1.25rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+                  <div style="display: flex; align-items: center; gap: 0.4rem;">
+                    <span>🧭</span>
+                    <h5 style="color: var(--gold-light); margin: 0; font-size: 0.95rem; font-weight: 700;">Your Next 24 Hours Checklist</h5>
+                  </div>
+                  <span id="next24ProgressBadge" style="font-size: 0.75rem; color: #cbd5e1; font-family: monospace;">0 / 4 Completed</span>
+                </div>
+
+                <div class="checklist-progress-bar" style="height: 6px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; margin-bottom: 1rem;">
+                  <div id="checklistProgressBarFill" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--gold-primary), var(--emerald-glow)); transition: width 0.3s ease;"></div>
+                </div>
+
+                <div id="next24ChecklistItems" style="display: flex; flex-direction: column; gap: 0.6rem;">
+                  <!-- Checkbox items populated here -->
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- ⚡ HIGGSFIELD GENERATIVE PIPELINE INSPECTOR -->
+            <!-- ========================================== -->
+            <div class="higgsfield-inspector-toggle-box" style="margin-top: 1.25rem;">
+              <button class="secondary-pill-btn" onclick="toggleHiggsfieldInspector()" style="width: 100%; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.3); color: #cbd5e1; padding: 0.65rem 1rem; border-radius: var(--radius-md); cursor: pointer;">
+                <span style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 600;">
+                  <span>🎬</span> <span>Higgsfield AI Generative Pipeline Inspector</span>
+                  <span style="background: rgba(16,185,129,0.15); color: var(--emerald-glow); font-size: 0.7rem; padding: 0.1rem 0.5rem; border-radius: var(--radius-full);">Verified Architecture</span>
+                </span>
+                <span id="higgsfieldChevron">▼</span>
+              </button>
+
+              <div id="higgsfieldInspectorContent" style="display: none; margin-top: 0.75rem; background: #050b16; border: 1px solid var(--border-gold); border-radius: var(--radius-md); padding: 1.25rem; font-size: 0.82rem;">
+                <div style="color: var(--gold-light); font-weight: 700; margin-bottom: 0.4rem;">
+                  Controlled Synthesis: VivekSaarthi Knowledge Layer ➔ Higgsfield Video Generation
+                </div>
+                <p style="color: var(--text-muted); font-size: 0.78rem; margin-bottom: 0.85rem; line-height: 1.4;">
+                  Higgsfield is used strictly as the visual rendering engine to avoid hallucinating historical teachings. VivekSaarthi generates structured deterministic scene prompts, camera angles, character consistency tokens, and voice pacing:
+                </p>
+                <div id="higgsfieldScenesList" style="display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 0.85rem;">
+                  <!-- Scene breakdowns -->
+                </div>
+                <div style="display: flex; justify-content: flex-end;">
+                  <button class="secondary-pill-btn" onclick="copyHiggsfieldPromptPayload()" style="background: rgba(212,175,55,0.15); border: 1px solid var(--border-gold); color: var(--gold-light); font-size: 0.75rem; padding: 0.35rem 0.8rem; border-radius: var(--radius-sm); cursor: pointer;">
+                    📋 Copy Controlled Higgsfield Payload
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- 🚀 7-DAY & 14-DAY SADHANA CHALLENGE LAUNCHER -->
+            <!-- ========================================== -->
+            <div class="sadhana-launcher-card" id="sadhanaLauncherCard" style="margin-top: 1.75rem; background: linear-gradient(135deg, rgba(11,26,48,0.9), rgba(7,15,30,0.95)); border: 1.5px solid var(--gold-primary); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.75rem;">
+                <div>
+                  <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <span style="font-size: 1.4rem;">🧭</span>
+                    <h4 style="font-family: var(--font-heading); color: #fff; margin: 0; font-size: 1.25rem;">
+                      Sankalpa Sadhana: Choose Your Action Time Period
+                    </h4>
+                  </div>
+                  <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0.35rem 0 0 0;">
+                    Motivation without execution resets in 24 hours. Commit to a structured Sadhana with daily tasks, verify with photo/audio proof, and earn verified Karma points!
+                  </p>
+                </div>
+                <span style="background: rgba(212,175,55,0.15); border: 1px solid var(--gold-primary); color: var(--gold-light); font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: var(--radius-full);">
+                  🔥 Proof-Verified Points
+                </span>
+              </div>
+
+              <!-- Time Period Selector: 7 Days or 14 Days -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.25rem;">
+                <div class="period-choice-card active-period" id="periodCard7" onclick="selectSadhanaPeriod(7)" style="background: rgba(212,175,55,0.12); border: 2px solid var(--gold-primary); border-radius: var(--radius-md); padding: 1rem; cursor: pointer; transition: all 0.2s ease;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 1.1rem; font-weight: 800; color: #fff;">⚡ 7 Days</span>
+                    <span style="font-size: 0.75rem; background: rgba(16,185,129,0.2); color: var(--emerald-glow); padding: 0.15rem 0.5rem; border-radius: var(--radius-full); font-weight: 700;">+245 Karma</span>
+                  </div>
+                  <div style="font-size: 0.82rem; color: var(--gold-light); font-weight: 600; margin-top: 0.3rem;">Quick Habit Reset</div>
+                  <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.2rem;">Overcome initial fear, restart momentum, and establish morning study discipline.</div>
+                </div>
+
+                <div class="period-choice-card" id="periodCard14" onclick="selectSadhanaPeriod(14)" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(212,175,55,0.3); border-radius: var(--radius-md); padding: 1rem; cursor: pointer; transition: all 0.2s ease;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 1.1rem; font-weight: 800; color: #fff;">🌟 14 Days</span>
+                    <span style="font-size: 0.75rem; background: rgba(255,115,0,0.2); color: var(--saffron-primary); padding: 0.15rem 0.5rem; border-radius: var(--radius-full); font-weight: 700;">+490 Karma + Bonus</span>
+                  </div>
+                  <div style="font-size: 0.82rem; color: #cbd5e1; font-weight: 600; margin-top: 0.3rem;">Deep Transformation</div>
+                  <div style="font-size: 0.75rem; color: #94a3b8; margin-top: 0.2rem;">Complete mastery: simulated test drills, deep work blocks, and mental calmness.</div>
+                </div>
+              </div>
+
+              <button class="primary-gold-btn" id="launchSadhanaBtn" onclick="launchSadhanaChallenge()" style="width: 100%; padding: 0.9rem; font-size: 1rem; font-weight: 800; border-radius: var(--radius-md); display: flex; justify-content: center; align-items: center; gap: 0.6rem; cursor: pointer;">
+                <span>🚀</span> <span id="launchSadhanaBtnText">Launch 7-Day Sadhana Challenge (+35 Karma/Day)</span>
+              </button>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- 🌟 ACTIVE SADHANA ROADMAP & VERIFICATION STUDIO -->
+            <!-- ========================================== -->
+            <div class="active-sadhana-dashboard" id="activeSadhanaDashboard" style="display: none; margin-top: 2rem; background: var(--bg-card); border: 1.5px solid var(--border-gold); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-card);">
+              <!-- Top Challenge Bar -->
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(212,175,55,0.25); padding-bottom: 1.25rem;">
+                <div>
+                  <div style="display: flex; align-items: center; gap: 0.6rem;">
+                    <span style="font-size: 1.6rem;">👑</span>
+                    <div>
+                      <h3 style="font-family: var(--font-heading); color: #fff; margin: 0; font-size: 1.35rem;" id="dashboardChallengeTitle">
+                        7-Day Fearlessness &amp; Exam Mastery Sadhana
+                      </h3>
+                      <p style="font-size: 0.82rem; color: var(--gold-light); margin: 0.2rem 0 0 0;" id="dashboardChallengeSub">
+                        Daily Verified Actions Grounded in Swami Vivekananda's Principles
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 0.75rem; align-items: center;">
+                  <div style="background: rgba(255,115,0,0.15); border: 1px solid var(--saffron-primary); padding: 0.4rem 0.85rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 800; color: var(--saffron-primary); display: flex; align-items: center; gap: 0.4rem;">
+                    <span>🔥</span> <span id="dashboardStreakTag">Streak: 1 Day</span>
+                  </div>
+                  <div style="background: rgba(16,185,129,0.15); border: 1px solid var(--emerald-glow); padding: 0.4rem 0.85rem; border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 800; color: var(--emerald-glow); display: flex; align-items: center; gap: 0.4rem;">
+                    <span>⚡</span> <span id="dashboardKarmaEarnedTag">+0 Karma</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Overall Progress Bar -->
+              <div style="margin-bottom: 1.75rem;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 0.4rem; color: #cbd5e1;">
+                  <span id="dashboardProgressText">Progress: Day 1 of 7 (0% Completed)</span>
+                  <span style="color: var(--gold-light); font-weight: 700;" id="dashboardDaysRemainingText">7 Days Remaining</span>
+                </div>
+                <div style="height: 10px; background: rgba(255,255,255,0.08); border-radius: 5px; overflow: hidden; border: 1px solid rgba(212,175,55,0.2);">
+                  <div id="dashboardProgressBarFill" style="width: 0%; height: 100%; background: linear-gradient(90deg, #ff7300, #d4af37, #10b981); transition: width 0.4s ease;"></div>
+                </div>
+              </div>
+
+              <!-- Daily Tasks Timeline & Verification Hub -->
+              <div id="sadhanaDailyTasksList" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                <!-- Populated with Day Cards -->
+              </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- 💬 SAARTHI AI FOLLOW-UP COPILOT / CHATBOT -->
+            <!-- ========================================== -->
+            <div class="saarthi-chatbot-container" style="margin-top: 2rem; background: rgba(7, 15, 30, 0.9); border: 1.5px solid var(--border-gold); border-radius: var(--radius-lg); padding: 1.65rem 1.85rem;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.75rem;">
+                <div style="display: flex; align-items: center; gap: 0.6rem;">
+                  <img src="assets/logo.jpg" alt="Saarthi" style="width: 36px; height: 36px; border-radius: 50%; border: 1.5px solid var(--gold-primary);">
+                  <div>
+                    <h4 style="font-family: var(--font-heading); color: #fff; margin: 0; font-size: 1.05rem;">Saarthi Follow-up Mentor</h4>
+                    <span style="font-size: 0.75rem; color: var(--emerald-glow);">● Online • Reflection &amp; Action Copilot</span>
+                  </div>
+                </div>
+                <span style="font-size: 0.78rem; color: var(--gold-light); font-style: italic;">"Arise, Awake!"</span>
+              </div>
+
+              <!-- Chat Message History -->
+              <div id="saarthiChatHistory" style="display: flex; flex-direction: column; gap: 0.85rem; max-height: 330px; overflow-y: auto; padding-right: 0.5rem; margin-bottom: 1.1rem;">
+                <div style="display: flex; gap: 0.6rem; align-items: flex-start;">
+                  <span style="font-size: 1.25rem;">🧘‍♂️</span>
+                  <div style="background: rgba(212, 175, 55, 0.12); border: 1px solid var(--border-gold); border-radius: 12px; border-top-left-radius: 2px; padding: 0.85rem 1.1rem; color: #f1f5f9; font-size: 0.92rem; line-height: 1.5; max-width: 85%;">
+                    Video dekhne ke baad, main tumhare liye agla practical step plan kar sakta hoon. Kya tum chahogi main tumhare liye kal ka action plan bana du? Ya Sadhana challenge shuru karein?
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Action Chips -->
+              <div style="display: flex; gap: 0.45rem; overflow-x: auto; padding-bottom: 0.6rem; margin-bottom: 0.75rem;">
+                <button class="scene-chip-btn" onclick="sendQuickChatMessage('🚀 7-Day Challenge Shuru Karo')" style="background: rgba(212,175,55,0.15); border: 1px solid var(--border-gold); color: var(--gold-light); font-size: 0.78rem; padding: 0.3rem 0.75rem; border-radius: var(--radius-full); cursor: pointer; white-space: nowrap;">
+                  🚀 7-Day Challenge Shuru Karo
+                </button>
+                <button class="scene-chip-btn" onclick="sendQuickChatMessage('📅 Kal Ka Study Plan Banao')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; font-size: 0.78rem; padding: 0.3rem 0.75rem; border-radius: var(--radius-full); cursor: pointer; white-space: nowrap;">
+                  📅 Kal Ka Study Plan Banao
+                </button>
+                <button class="scene-chip-btn" onclick="sendQuickChatMessage('🧘 Darr &amp; Anxiety Tips')" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); color: #cbd5e1; font-size: 0.78rem; padding: 0.3rem 0.75rem; border-radius: var(--radius-full); cursor: pointer; white-space: nowrap;">
+                  🧘 Darr &amp; Anxiety Tips
+                </button>
+              </div>
+
+              <!-- Chat Input Bar -->
+              <div style="display: flex; gap: 0.6rem;">
+                <input type="text" id="saarthiChatInput" placeholder="Apna sawal ya agla step poochhein..." style="flex: 1; background: rgba(0,0,0,0.55); border: 1.5px solid rgba(212,175,55,0.35); border-radius: var(--radius-md); padding: 0.85rem 1.15rem; color: #fff; font-size: 0.95rem; outline: none;" onkeydown="if(event.key==='Enter') sendSaarthiChatMessage()">
+                <button class="primary-gold-btn" onclick="sendSaarthiChatMessage()" style="padding: 0.85rem 1.4rem; font-weight: 700; border-radius: var(--radius-md); cursor: pointer; font-size: 0.95rem;">
+                  Send
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- 3. PREVIOUS MENTORSHIP JOURNEY / PAST SESSIONS -->
+      <div class="past-mentorships-container" id="pastMentorshipsSection" style="margin-top: 2.5rem; background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: var(--radius-xl); padding: 2rem; box-shadow: var(--shadow-card);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <span style="font-size: 1.5rem;">📜</span>
+              <h3 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff; margin: 0;" data-i18n="history_heading">
+                My Past Mentorship Sessions (पूर्व मार्गदर्शन यात्रा)
+              </h3>
+              <span id="pastSessionsCountBadge" style="background: rgba(212,175,55,0.18); border: 1px solid var(--gold-primary); color: var(--gold-light); font-size: 0.75rem; font-weight: 700; padding: 0.15rem 0.6rem; border-radius: var(--radius-full);">
+                0 Sessions
+              </span>
+            </div>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.3rem;" data-i18n="history_sub">
+              Your previous spiritual consultations are permanently saved. Continue where you left off, edit your notes, or share wisdom with peers!
+            </p>
+          </div>
+          <div style="display: flex; gap: 0.6rem;">
+            <button class="secondary-pill-btn" onclick="claimDailyCheckinBonus()" style="background: rgba(16,185,129,0.15); border: 1px solid var(--emerald-glow); color: var(--emerald-glow); font-size: 0.78rem; font-weight: 700; padding: 0.4rem 0.85rem; border-radius: var(--radius-full); cursor: pointer;" title="Claim daily Sadhana Karma">
+              🎁 Claim Daily +50 Karma
+            </button>
+            <button class="secondary-pill-btn" onclick="fetchAndRenderPastSessions()" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 0.78rem; padding: 0.4rem 0.85rem; border-radius: var(--radius-full); cursor: pointer;">
+              🔄 Refresh
+            </button>
+          </div>
+        </div>
+
+        <!-- Low Karma Alert Banner (shown when karma is 0) -->
+        <div id="zeroKarmaWarningBanner" style="display: none; background: linear-gradient(135deg, rgba(220,38,38,0.2), rgba(212,175,55,0.15)); border: 1px solid rgba(239,68,68,0.5); border-radius: var(--radius-md); padding: 1rem 1.25rem; margin-bottom: 1.25rem; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.4rem;">⚠️</span>
+            <div>
+              <strong style="color: #fca5a5; font-size: 0.88rem;" data-i18n="karma_zero_title">0 Karma Balance Remaining!</strong>
+              <p style="color: #cbd5e1; font-size: 0.78rem; margin: 0;" data-i18n="karma_zero_desc">Earn +15 Karma by answering questions in Youth Sangam, claim your +50 daily check-in, or top-up.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button onclick="claimDailyCheckinBonus()" style="background: var(--gold-primary); border: none; color: #070f1e; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: var(--radius-full); font-size: 0.76rem; cursor: pointer;">
+              🎁 Claim +50 Free
+            </button>
+            <button onclick="switchTab('community')" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 0.4rem 0.8rem; border-radius: var(--radius-full); font-size: 0.76rem; cursor: pointer;">
+              👥 Help in Sangam
+            </button>
+          </div>
+        </div>
+
+        <!-- Zero / Empty State -->
+        <div id="pastSessionsEmptyState" style="text-align: center; padding: 2rem 1rem; background: rgba(7, 15, 30, 0.5); border-radius: var(--radius-lg); border: 1px dashed rgba(212,175,55,0.25);">
+          <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🪷</div>
+          <h4 style="color: #fff; font-size: 1.05rem; margin-bottom: 0.4rem;" data-i18n="history_empty_title">
+            No Past Sessions Yet
+          </h4>
+          <p style="font-size: 0.82rem; color: var(--text-muted); max-width: 480px; margin: 0 auto;" data-i18n="history_empty_desc">
+            Ask any question or dilemma to Swami Vivekananda above. Each wisdom session is automatically recorded here so your guidance cycle never resets!
+          </p>
+        </div>
+
+        <!-- List of Sessions -->
+        <div class="past-sessions-grid" id="pastSessionsList" style="display: none; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.25rem;">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: YOUTH SANGAM (COMMUNITY & PEER SUPPORT WITH UNIQUE ACCOUNTS) -->
+    <section class="tab-content" id="tabContentCommunity">
+      <div class="community-layout">
+        
+        <!-- Left Side: Posts & Feed -->
+        <div class="community-main">
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff;" data-i18n="comm_heading">
+                Youth Sangam - Be Each Other's Guide
+              </h3>
+              <p style="font-size: 0.85rem; color: var(--text-muted);" data-i18n="comm_subheading">
+                Every user has a unique account &amp; @handle. Help peers to earn Karma points!
+              </p>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+              <button class="comm-filter-btn active" onclick="filterCommunityFeed('all', this)" data-i18n="comm_filter_all">All</button>
+              <button class="comm-filter-btn" onclick="filterCommunityFeed('fear', this)" data-i18n="comm_filter_fear">⚡ Fear &amp; Courage</button>
+              <button class="comm-filter-btn" onclick="filterCommunityFeed('focus', this)" data-i18n="comm_filter_focus">📱 Focus &amp; Habits</button>
+              <button class="comm-filter-btn" onclick="filterCommunityFeed('unanswered', this)" data-i18n="comm_filter_unanswered">⚡ Needs Solutions (+25)</button>
+              <button class="secondary-pill-btn" onclick="openCommunityAccountModal()" style="background: rgba(212,175,55,0.18); border: 1px solid var(--gold-primary); color: var(--gold-light); font-size: 0.78rem; font-weight: 700; padding: 0.4rem 0.85rem; border-radius: var(--radius-full); cursor: pointer;" title="Create alternate identity or switch account">
+                🔄 Switch / New Sangam Account
+              </button>
+              <button class="secondary-pill-btn" onclick="openGuardianModal()" style="background: rgba(220, 38, 38, 0.18); border: 1px solid #ef4444; color: #fca5a5; font-size: 0.78rem; font-weight: 700; padding: 0.4rem 0.85rem; border-radius: var(--radius-full); cursor: pointer; display: flex; align-items: center; gap: 0.4rem;" title="Community Guardian & Defaulter Control Panel">
+                <span>🛡️</span> <span>Sangam Guardian &amp; Defaulters</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Blocked Defaulter Banner (Shown when user is blocked / defaulter) -->
+          <div id="communityBlockedBanner" style="display: none; background: linear-gradient(135deg, rgba(220, 38, 38, 0.25), rgba(153, 27, 27, 0.4)); border: 1px solid #ef4444; border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 10px 25px rgba(220, 38, 38, 0.2);">
+            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+              <span style="font-size: 2rem;">🚫</span>
+              <div style="flex: 1;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+                  <strong style="color: #fca5a5; font-size: 1.05rem;">COMMUNITY ACCESS SUSPENDED: Defaulter / Abusive Content Notice</strong>
+                  <span style="background: #ef4444; color: #fff; font-size: 0.7rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 4px;">BLOCKED</span>
+                </div>
+                <p id="communityBlockedReasonText" style="color: #fee2e2; font-size: 0.86rem; margin: 0.5rem 0 0.8rem 0; line-height: 1.5;">
+                  Your account has been restricted from posting or commenting in Youth Sangam due to guideline violations. Swami Vivekananda teaches: <em>"Purity of thought, speech, and action is the eternal foundation of strength."</em> Dirty comments and defaulter behavior are strictly barred.
+                </p>
+                <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+                  <button onclick="openGuardianModal()" style="background: rgba(255,255,255,0.1); border: 1px solid #f87171; color: #fff; font-size: 0.75rem; padding: 0.35rem 0.75rem; border-radius: 6px; cursor: pointer;">
+                    🛡️ View Moderation Record &amp; Status
+                  </button>
+                  <button onclick="openCommunityAccountModal()" style="background: transparent; border: none; color: #fca5a5; font-size: 0.75rem; cursor: pointer; text-decoration: underline;">
+                    🔄 Switch Account
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Create New Post Box -->
+          <div style="background: var(--bg-card); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 1.5rem; margin-bottom: 1.8rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+              <div style="display: flex; align-items: center; gap: 0.6rem;">
+                <span id="postingAsAvatar" style="font-size: 1.2rem;">🧘‍♂️</span>
+                <span style="font-size: 0.82rem; color: var(--text-muted);">
+                  <span data-i18n="posting_as_prefix">Posting as:</span> <strong id="postingAsLabel" style="color: var(--gold-light);">Guest Seeker (@guest)</strong>
+                </span>
+              </div>
+              <button type="button" onclick="openCommunityAccountModal()" style="background: none; border: none; color: var(--gold-light); font-size: 0.75rem; cursor: pointer; text-decoration: underline;">
+                🔄 Change Identity
+              </button>
+            </div>
+
+            <textarea 
+              id="newCommunityPostText" 
+              class="new-post-textarea" 
+              placeholder="Share your dilemma or question... (e.g. 'How to overcome anxiety and build consistency?')"
+              style="width: 100%; min-height: 80px; background: rgba(7, 15, 30, 0.85); border: 1px solid var(--border-gold); border-radius: var(--radius-md); padding: 0.85rem; color: #fff; font-size: 0.9rem;"
+            ></textarea>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.8rem;">
+              <label class="anon-toggle" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-muted); cursor: pointer;">
+                <input type="checkbox" id="postAnonymousCheck">
+                <span data-i18n="anon_toggle_label">Post Anonymously</span>
+              </label>
+
+              <button class="post-publish-btn" onclick="publishCommunityPost()" style="background: linear-gradient(135deg, #ff7300, #d4af37); border: none; color: #070f1e; font-weight: 800; padding: 0.55rem 1.25rem; border-radius: var(--radius-full); cursor: pointer;">
+                <span>🚀</span> <span data-i18n="btn_publish_post">Post in Sangam (+5 Karma)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Feed Posts List -->
+          <div class="posts-feed" id="communityPostsFeed"></div>
+
+        </div>
+
+        <!-- Right Side: Sidebar & Karma Leaderboard -->
+        <aside class="community-sidebar">
+          
+          <div class="sidebar-card">
+            <h4 style="font-family: var(--font-heading); font-size: 1.15rem; color: #fff; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <span>🏆</span> <span data-i18n="leaderboard_title">Top Karma Mentors (Unique Accounts)</span>
+            </h4>
+            <div class="leaderboard-list" id="karmaLeaderboardList">
+              <div style="display: flex; justify-content: space-between; padding: 0.55rem 0.7rem; border-radius: 6px; background: rgba(255,255,255,0.02); margin-bottom: 0.5rem;">
+                <div>
+                  <strong style="color: #fff;">Aarav Sharma</strong>
+                  <span style="color: var(--text-dim); font-size: 0.72rem; display: block;">@aarav_sharma</span>
+                </div>
+                <strong style="color: var(--emerald-glow);">1,840 Karma</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 0.55rem 0.7rem; border-radius: 6px; background: rgba(255,255,255,0.02); margin-bottom: 0.5rem;">
+                <div>
+                  <strong style="color: #fff;">Priya Patel</strong>
+                  <span style="color: var(--text-dim); font-size: 0.72rem; display: block;">@priya_patel</span>
+                </div>
+                <strong style="color: var(--emerald-glow);">1,420 Karma</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 0.55rem 0.7rem; border-radius: 6px; background: rgba(255,255,255,0.02); margin-bottom: 0.5rem;">
+                <div>
+                  <strong style="color: #fff;">Rohan Verma</strong>
+                  <span style="color: var(--text-dim); font-size: 0.72rem; display: block;">@rohan_v</span>
+                </div>
+                <strong style="color: var(--emerald-glow);">990 Karma</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 0.55rem 0.7rem; border-radius: 6px; background: rgba(212,175,55,0.1); border: 1px solid var(--border-gold);">
+                <div>
+                  <strong style="color: var(--gold-light);" id="sidebarUserNameLabel">🌟 You</strong>
+                  <span style="color: var(--text-dim); font-size: 0.72rem; display: block;" id="sidebarUserHandleLabel">@guest</span>
+                </div>
+                <strong style="color: var(--emerald-glow);" id="sidebarUserKarma">350 Karma</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="sidebar-card" style="border-color: rgba(16, 185, 129, 0.25);">
+            <h4 style="color: var(--emerald-glow); font-size: 1rem; margin-bottom: 0.6rem;">
+              <span>💡</span> <span data-i18n="how_karma_title">How to Earn Karma Points?</span>
+            </h4>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.82rem; color: var(--text-muted);">
+              <li data-i18n="how_karma_1">✅ Provide Solution to a Post: +15 Karma</li>
+              <li data-i18n="how_karma_2">✅ Upvoted Solution: +10 Karma per Upvote</li>
+              <li data-i18n="how_karma_3">✅ Best Answer Selected: +50 Karma</li>
+              <li data-i18n="how_karma_4">✅ Share a Dilemma in Sangam: +5 Karma</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-card" style="border-color: rgba(239, 68, 68, 0.35); background: rgba(220, 38, 38, 0.06);">
+            <h4 style="color: #fca5a5; font-size: 0.95rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.45rem;">
+              <span>🛡️</span> <span>Dharma Rakshak Shield</span>
+            </h4>
+            <p style="font-size: 0.76rem; color: #cbd5e1; line-height: 1.45; margin-bottom: 0.6rem;">
+              Youth Sangam is a holy sanctuary for seekers. Zero tolerance for abusive words, dirty comments, or defaulting on community trust.
+            </p>
+            <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.74rem; color: #e2e8f0; margin-bottom: 0.75rem;">
+              <li>🚫 <strong>Dirty Comments:</strong> Instant strike &amp; auto-ban</li>
+              <li>🚫 <strong>Defaulters:</strong> Feed access permanently locked</li>
+              <li>🚩 <strong>Peer Reporting:</strong> 1-click report on every card</li>
+            </ul>
+            <button onclick="openGuardianModal()" style="width: 100%; background: rgba(220, 38, 38, 0.2); border: 1px solid rgba(239, 68, 68, 0.5); color: #fca5a5; font-size: 0.76rem; font-weight: 700; padding: 0.45rem; border-radius: 6px; cursor: pointer;">
+              🛡️ Open Community Guardian Hub
+            </button>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: KARMA & PRO STORE -->
+    <section class="tab-content" id="tabContentStore">
+      
+      <div style="background: linear-gradient(135deg, rgba(13, 26, 48, 0.95), rgba(7, 15, 30, 0.98)); border: 1px solid var(--border-gold); border-radius: var(--radius-xl); padding: 2.5rem; margin-bottom: 2.5rem; display: grid; grid-template-columns: 1.2fr 1fr; gap: 2rem; align-items: center;">
+        <div>
+          <h2 style="font-family: var(--font-heading); font-size: 2rem; color: #fff; margin-bottom: 0.85rem;" data-i18n="store_hero_title">
+            Karma Mandir &amp; Saarthi Pass
+          </h2>
+          <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;" data-i18n="store_hero_desc">
+            Every new seeker gets 1 Month of AI Mentorship 100% Free. Continue free forever by helping peers with Karma points, or purchase a Saarthi Pass!
+          </p>
+
+          <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 1.25rem;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.6rem; font-size: 0.85rem;">
+              <span style="font-weight: 700; color: #fff;" data-i18n="trial_status_title">1-Month Free Trial Status</span>
+              <span style="color: var(--emerald-glow); font-weight: 700;" data-i18n="trial_remaining">24 Days Remaining</span>
+            </div>
+            <div style="width: 100%; height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden; margin-bottom: 0.5rem;">
+              <div style="width: 76%; height: 100%; background: linear-gradient(90deg, #10b981, #d4af37); border-radius: 4px;"></div>
+            </div>
+            <div style="font-size: 0.75rem; color: var(--text-dim);" data-i18n="trial_footnote">
+              Your account never stops after trial — Karma points keep it active free!
+            </div>
+          </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(255, 115, 0, 0.08)); border: 1px solid var(--border-gold); border-radius: var(--radius-xl); padding: 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+          <div style="font-size: 0.8rem; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 0.5rem;" data-i18n="wallet_label">
+            Your Karma Balance
+          </div>
+          <div style="font-size: 3rem; font-weight: 800; color: #fff; margin-bottom: 0.4rem;">
+            <span style="color: var(--emerald-glow); font-size: 2rem;">⚡</span> <span id="storeLargeKarmaBalance">350</span>
+          </div>
+          <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.2rem;" data-i18n="wallet_sub">
+            Points earned through peer support &amp; wisdom shares
+          </p>
+
+          <div style="display: flex; gap: 0.75rem; width: 100%;">
+            <button class="secondary-pill-btn" onclick="switchTab('community')" style="flex: 1; padding: 0.65rem; border-radius: 8px; background: rgba(255,255,255,0.06); border: 1px solid var(--border-gold); color: #fff; cursor: pointer;" data-i18n="btn_earn_more">
+              Earn More Points
+            </button>
+            <button class="secondary-pill-btn" onclick="scrollToRedeem()" style="flex: 1; padding: 0.65rem; border-radius: 8px; background: var(--gold-primary); border: none; color: #070f1e; font-weight: 700; cursor: pointer;" data-i18n="btn_redeem_now">
+              Redeem Points
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Direct Buy Bot / Pro Subscriptions -->
+      <div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff; margin-bottom: 0.5rem;" data-i18n="buy_section_title">
+          Direct Buy Vivek साथी Bot
+        </h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;" data-i18n="buy_section_desc">
+          If you lack time to earn points in community, purchase an affordable pass to unlock the bot directly:
+        </p>
+
+        <div class="pricing-grid">
+          
+          <div class="pricing-card">
+            <div>
+              <h4 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff; margin-bottom: 0.5rem;" data-i18n="tier_1_name">Shishya Pass</h4>
+              <div style="display: flex; align-items: baseline; gap: 0.3rem; margin-bottom: 1.25rem;">
+                <span style="font-size: 1.3rem; color: var(--gold-light); font-weight: 700;">₹</span>
+                <span style="font-size: 2.4rem; font-weight: 800; color: #fff;">99</span>
+                <span style="font-size: 0.85rem; color: var(--text-dim);" data-i18n="tier_1_period">/ month</span>
+              </div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2rem; font-size: 0.88rem; color: #cbd5e1;">
+                <li><span style="color: var(--emerald-glow);">✓</span> <span data-i18n="tier_1_feat_1">Unlimited AI Mentorship</span></li>
+                <li><span style="color: var(--emerald-glow);">✓</span> <span data-i18n="tier_1_feat_2">Swami Vivekananda Baritone Voice</span></li>
+                <li><span style="color: var(--emerald-glow);">✓</span> <span data-i18n="tier_1_feat_3">10 AI Video Capsules / month</span></li>
+                <li><span style="color: var(--emerald-glow);">✓</span> <span data-i18n="tier_1_feat_4">Ad-free experience</span></li>
+              </ul>
+            </div>
+            <button class="auth-submit-btn" onclick="openCheckoutModal('Shishya Pass (Monthly)', 99)" data-i18n="btn_buy_shishya">
+              Buy Monthly Pass (₹99)
+            </button>
+          </div>
+
+          <div class="pricing-card featured">
+            <div>
+              <div style="background: linear-gradient(135deg, #ff7300, #d4af37); color: #070f1e; font-size: 0.72rem; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: var(--radius-full); display: inline-block; margin-bottom: 0.5rem;" data-i18n="tier_2_tag">
+                MOST POPULAR • 60% OFF
+              </div>
+              <h4 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff; margin-bottom: 0.5rem;" data-i18n="tier_2_name">Sadhak 3-Month Pass</h4>
+              <div style="display: flex; align-items: baseline; gap: 0.3rem; margin-bottom: 1.25rem;">
+                <span style="font-size: 1.3rem; color: var(--gold-light); font-weight: 700;">₹</span>
+                <span style="font-size: 2.4rem; font-weight: 800; color: #fff;">249</span>
+                <span style="font-size: 0.85rem; color: var(--text-dim);" data-i18n="tier_2_period">/ 3 months</span>
+              </div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2rem; font-size: 0.88rem; color: #cbd5e1;">
+                <li><span style="color: var(--emerald-glow);">✓</span> <span data-i18n="tier_2_feat_1">All Shishya Pass features</span></li>
+                <li><span style="color: var(--emerald-glow);">✓</span> <span data-i18n="tier_2_feat_2">Unlimited HD Video Capsules</span></li>
+                <li><span style="color: var(--emerald-glow);">✓</span> <span data-i18n="tier_2_feat_3">Priority AI Response Speed</span></li>
+                <li><span style="color: var(--emerald-glow);">✓</span> <span data-i18n="tier_2_feat_4">"Verified Sadhak" Golden Community Badge</span></li>
+                <li><span style="color: var(--emerald-glow);">✓</span> <span data-i18n="tier_2_feat_5">500 Bonus Karma Points Gifted</span></li>
+              </ul>
+            </div>
+            <button class="auth-submit-btn" onclick="openCheckoutModal('Sadhak 3-Month Pass', 249)" data-i18n="btn_buy_sadhak">
+              Buy 3-Month Pass (₹249)
+            </button>
+          </div>
+
+          <div class="pricing-card">
+            <div>
+              <h4 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff; margin-bottom: 0.5rem;" data-i18n="tier_3_name">Saarthi Lifetime Bot</h4>
+              <div style="display: flex; align-items: baseline; gap: 0.3rem; margin-bottom: 1.25rem;">
+                <span style="font-size: 1.3rem; color: var(--gold-light); font-weight: 700;">₹</span>
+                <span style="font-size: 2.4rem; font-weight: 800; color: #fff;">699</span>
+                <span style="font-size: 0.85rem; color: var(--text-dim);" data-i18n="tier_3_period">one-time payment</span>
+              </div>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 2rem; font-size: 0.88rem; color: #cbd5e1;">
+                <li><span style="color: var(--emerald-glow);">✓</span> <span data-i18n="tier_3_feat_1">Lifetime Unlimited Access Forever</span></li>
+                <li><span style="color: var(--emerald-glow);">✓</span> <span data-i18n="tier_3_feat_2">Ultra HD Vivekananda Voice Clones</span></li>
+                <li><span style="color: var(--emerald-glow);">✓</span> <span data-i18n="tier_3_feat_3">Direct WhatsApp / Telegram Bot Integration</span></li>
+                <li><span style="color: var(--emerald-glow);">✓</span> <span data-i18n="tier_3_feat_4">Lifetime Community Legend Crown 👑</span></li>
+              </ul>
+            </div>
+            <button class="auth-submit-btn" onclick="openCheckoutModal('Saarthi Lifetime Bot', 699)" data-i18n="btn_buy_lifetime">
+              Buy Lifetime Pass (₹699)
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- 1. AUTHENTICATION MODAL (PURE EMAIL & UNIQUE USERNAMES) -->
+  <div class="modal-overlay" id="authModalOverlay">
+    <div class="auth-modal-card">
+      <button class="modal-close-btn" onclick="closeAuthModal()">✕</button>
+
+      <div style="text-align: center; margin-bottom: 1.25rem;">
+        <img src="assets/logo.jpg" alt="Logo" style="width: 54px; height: 54px; border-radius: 50%; border: 2px solid var(--gold-primary); margin-bottom: 0.5rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.45rem; color: #fff;" data-i18n="auth_modal_title">
+          Vivek साथी Portal
+        </h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted);" data-i18n="auth_modal_sub">
+          Login or Register with Email to access your unique Youth Sangam ID
+        </p>
+      </div>
+
+      <!-- Auth Mode Tabs -->
+      <div class="auth-tabs-header">
+        <button class="auth-tab-link active" id="authTabBtnMobile" onclick="switchAuthTab('mobile')" data-i18n="tab_mobile_otp">📱 Mobile OTP</button>
+        <button class="auth-tab-link" id="authTabBtnPassword" onclick="switchAuthTab('password')" data-i18n="tab_password">🔑 Password</button>
+        <button class="auth-tab-link" id="authTabBtnOtp" onclick="switchAuthTab('otp')" data-i18n="tab_otp">📧 Email OTP</button>
+        <button class="auth-tab-link" id="authTabBtnRegister" onclick="switchAuthTab('register')" data-i18n="tab_register">📝 Register</button>
+      </div>
+
+      <!-- Mode 1: Mobile Number OTP Login -->
+      <div id="authPanelMobile">
+        <div class="form-group">
+          <label data-i18n="label_mobile">10-Digit Mobile Number:</label>
+          <div class="otp-send-row">
+            <span style="background: rgba(212,175,55,0.15); border: 1px solid var(--border-gold); padding: 0.65rem 0.85rem; border-radius: var(--radius-md); color: var(--gold-light); font-weight: 700;">+91</span>
+            <input type="tel" id="authMobileTargetInput" class="form-input" placeholder="e.g. 9876543210" maxlength="10">
+            <button class="send-otp-btn" id="sendMobileOtpBtn" onclick="requestMobileOtpFromBackend()" data-i18n="btn_send_mobile_otp">
+              Send OTP
+            </button>
+          </div>
+          <small style="font-size: 0.72rem; color: var(--text-dim); display: block; margin-top: 4px;" data-i18n="mobile_otp_subtext">
+            📱 Instant SMS verification code for fast 1-click access
+          </small>
+        </div>
+
+        <div class="form-group" id="mobileOtpCodeInputGroup" style="display: none;">
+          <label data-i18n="label_enter_otp">Enter 6-Digit OTP:</label>
+          <input type="text" id="authMobileOtpCodeInput" class="form-input" placeholder="Enter 6-digit code (e.g. 123456)" maxlength="6">
+        </div>
+
+        <button class="auth-submit-btn" id="verifyMobileOtpBtn" onclick="verifyMobileOtpAndLogin()" style="display: none;" data-i18n="btn_verify_mobile_otp">
+          Verify Mobile OTP &amp; Enter Portal
+        </button>
+      </div>
+
+      <!-- Mode 2: Password Login -->
+      <div id="authPanelPassword" style="display: none;">
+        <div class="form-group">
+          <label data-i18n="label_email_or_user">Email, Mobile, or @Username:</label>
+          <input type="text" id="loginIdentifierInput" class="form-input" placeholder="Enter your email, mobile or username">
+        </div>
+        <div class="form-group">
+          <label data-i18n="label_password">Password:</label>
+          <input type="password" id="loginPasswordInput" class="form-input" placeholder="Enter password">
+        </div>
+        <button class="auth-submit-btn" onclick="submitPasswordLogin()" data-i18n="btn_login">
+          Login to Portal
+        </button>
+      </div>
+
+      <!-- Mode 3: Email OTP Login -->
+      <div id="authPanelOtp" style="display: none;">
+        <div class="form-group">
+          <label data-i18n="label_email">Your Email Address:</label>
+          <div class="otp-send-row">
+            <input type="email" id="authOtpTargetInput" class="form-input" placeholder="e.g. yourname@gmail.com">
+            <button class="send-otp-btn" id="sendOtpBtn" onclick="requestOtpFromBackend()" data-i18n="btn_send_otp">
+              Send OTP
+            </button>
+          </div>
+          <small style="font-size: 0.72rem; color: var(--text-dim); display: block; margin-top: 4px;" data-i18n="otp_subtext">
+            📧 A verification code will be sent instantly to your email inbox
+          </small>
+        </div>
+
+        <div class="form-group" id="otpCodeInputGroup" style="display: none;">
+          <label data-i18n="label_enter_otp">Enter 6-Digit OTP:</label>
+          <input type="text" id="authOtpCodeInput" class="form-input" placeholder="Enter 6-digit code (e.g. 123456)" maxlength="6">
+        </div>
+
+        <button class="auth-submit-btn" id="verifyOtpBtn" onclick="verifyOtpAndLogin()" style="display: none;" data-i18n="btn_verify_otp">
+          Verify OTP &amp; Enter Portal
+        </button>
+      </div>
+
+      <!-- Mode 4: New Registration with Unique Handle -->
+      <div id="authPanelRegister" style="display: none;">
+        <div class="form-group">
+          <label data-i18n="label_fullname">Full Name:</label>
+          <input type="text" id="regNameInput" class="form-input" placeholder="e.g. Aarav Sharma">
+        </div>
+        <div class="form-group">
+          <label data-i18n="label_username">Unique Handle / Username (for Youth Sangam):</label>
+          <input type="text" id="regUsernameInput" class="form-input" placeholder="e.g. aarav_sharma (will appear as @aarav_sharma)">
+          <small style="font-size: 0.72rem; color: var(--text-dim);" data-i18n="username_subtext">Your unique public identity in discussions.</small>
+        </div>
+        <div class="form-group">
+          <label data-i18n="label_email">Email Address:</label>
+          <input type="email" id="regEmailInput" class="form-input" placeholder="e.g. aarav@gmail.com">
+        </div>
+        <div class="form-group">
+          <label data-i18n="label_mobile">Mobile Number (Optional):</label>
+          <input type="tel" id="regMobileInput" class="form-input" placeholder="e.g. 9876543210" maxlength="10">
+        </div>
+        <div class="form-group">
+          <label data-i18n="label_password">Create Password:</label>
+          <input type="password" id="regPasswordInput" class="form-input" placeholder="At least 6 characters">
+        </div>
+        <button class="auth-submit-btn" onclick="submitRegistration()" data-i18n="btn_register">
+          Register Unique Account
+        </button>
+      </div>
+
+      <div class="social-auth-divider" data-i18n="auth_or_divider">OR</div>
+
+      <!-- Universal Google Sign-In (Allows ANY Google Account) -->
+      <button class="google-auth-btn" onclick="openGoogleAccountPrompt()">
+        <span style="font-size: 1.1rem;">🌐</span> <span data-i18n="btn_google">Continue with Google (Any Account)</span>
+      </button>
+
+      <!-- Continue as Guest Option & Fullscreen Login Page -->
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-top: 1.1rem;">
+        <a href="login.html" style="color: var(--gold-light); font-size: 0.85rem; font-weight: 700; text-decoration: underline;">
+          🔗 Open Dedicated Login Page (पूर्ण लॉगिन पृष्ठ)
+        </a>
+        <button type="button" class="text-link-btn" onclick="continueAsGuest()" style="background: none; border: none; color: var(--text-dim); font-size: 0.82rem; cursor: pointer; text-decoration: underline;" data-i18n="btn_continue_guest">
+          👉 Continue as Guest Seeker (Preview Mode)
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GOOGLE ACCOUNT PROMPT MODAL (DYNAMIC FOR ANY GMAIL) -->
+  <div class="modal-overlay" id="googlePromptModalOverlay">
+    <div class="auth-modal-card" style="max-width: 440px;">
+      <button class="modal-close-btn" onclick="closeGoogleAccountPrompt()">✕</button>
+      
+      <div style="text-align: center; margin-bottom: 1.25rem;">
+        <div style="font-size: 2.2rem; margin-bottom: 0.3rem;">🌐</div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff;" data-i18n="google_modal_title">
+          Sign in with Google
+        </h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted);" data-i18n="google_modal_sub">
+          Choose or enter any Google account to sign in or register
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="label_google_name">Your Name:</label>
+        <input type="text" id="googleUserNameInput" class="form-input" placeholder="e.g. Yukti Garg">
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="label_google_email">Your Google Email Address:</label>
+        <input type="email" id="googleUserEmailInput" class="form-input" placeholder="e.g. any_user@gmail.com">
+      </div>
+
+      <button class="auth-submit-btn" onclick="submitDynamicGoogleAuth()" data-i18n="btn_google_submit">
+        Continue as Google User
+      </button>
+    </div>
+  </div>
+
+  <!-- 2. AAPKA SAARTHI PORTAL MODAL (USER PROFILE & ID EDIT) -->
+  <div class="modal-overlay" id="userPortalModalOverlay">
+    <div class="portal-card">
+      <button class="modal-close-btn" onclick="closeUserPortalModal()">✕</button>
+
+      <div class="portal-header">
+        <div class="portal-avatar-large" id="portalUserAvatar">🧘‍♂️</div>
+        <div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: #fff;" id="portalUserName">
+            Aarav Sharma
+          </h3>
+          <p style="font-size: 0.85rem; color: var(--gold-light);" id="portalUserHandle">
+            @aarav_sharma
+          </p>
+          <p style="font-size: 0.78rem; color: var(--text-dim);" id="portalUserEmail">
+            aarav@gmail.com
+          </p>
+          <span style="display: inline-block; background: rgba(16, 185, 129, 0.15); color: var(--emerald-glow); font-size: 0.72rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: var(--radius-full); margin-top: 0.3rem;" data-i18n="portal_trial_badge">
+            🌟 1-Month Free Trial Active
+          </span>
+        </div>
+      </div>
+
+      <div class="portal-stats-row">
+        <div class="portal-stat-box">
+          <h5 id="portalStatsKarma">350</h5>
+          <p data-i18n="stat_karma_balance">Karma Balance</p>
+        </div>
+        <div class="portal-stat-box">
+          <h5>24 Days</h5>
+          <p data-i18n="stat_free_trial">Free Trial Remaining</p>
+        </div>
+        <div class="portal-stat-box">
+          <h5 id="portalStatsMentorships">8</h5>
+          <p data-i18n="stat_wisdom_capsules">Wisdom Capsules</p>
+        </div>
+      </div>
+
+      <h4 style="font-family: var(--font-heading); font-size: 1.15rem; color: #fff; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.5rem;" data-i18n="portal_edit_heading">
+        ✏️ Edit Unique Profile &amp; ID Details
+      </h4>
+
+      <div class="form-group">
+        <label data-i18n="portal_name_label">Your Full Name:</label>
+        <input type="text" id="editProfileNameInput" class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="portal_handle_label">Unique Handle (for Youth Sangam discussions):</label>
+        <input type="text" id="editProfileHandleInput" class="form-input" placeholder="e.g. aarav_sharma">
+        <small style="font-size: 0.72rem; color: var(--text-dim);" data-i18n="portal_handle_subtext">Must be unique. Appears on all your Sangam posts and answers.</small>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="portal_goal_label">Current Spiritual / Life Focus (Uddeshya):</label>
+        <select id="editProfileGoalInput" class="form-input" style="background: #070f1e;">
+          <option value="UPSC & Exam Stress Relief" data-i18n="opt_goal_1">UPSC &amp; Exam Stress Relief</option>
+          <option value="Overcoming Phone Addiction & Focus" data-i18n="opt_goal_2">Overcoming Phone Addiction &amp; Focus</option>
+          <option value="Inner Peace & Heartbreak Healing" data-i18n="opt_goal_3">Inner Peace &amp; Heartbreak Healing</option>
+          <option value="Physical Strength & Discipline" data-i18n="opt_goal_4">Physical Strength &amp; Discipline</option>
+          <option value="Finding Life Purpose & Dharma" data-i18n="opt_goal_5">Finding Life Purpose &amp; Dharma</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="portal_bio_label">Your Bio / Personal Note:</label>
+        <textarea id="editProfileBioInput" class="form-input" style="min-height: 80px; resize: vertical;"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="portal_avatar_label">Select Avatar Icon:</label>
+        <div style="display: flex; gap: 0.75rem; font-size: 1.5rem; cursor: pointer;">
+          <span onclick="selectAvatarIcon('🧘‍♂️')">🧘‍♂️</span>
+          <span onclick="selectAvatarIcon('🦁')">🦁</span>
+          <span onclick="selectAvatarIcon('🔥')">🔥</span>
+          <span onclick="selectAvatarIcon('🪷')">🪷</span>
+          <span onclick="selectAvatarIcon('⚔️')">⚔️</span>
+          <span onclick="selectAvatarIcon('🌟')">🌟</span>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
+        <button class="auth-submit-btn" onclick="saveUserProfileChanges()" style="flex: 2;" data-i18n="btn_save_profile">
+          💾 Save Profile Changes
+        </button>
+        <button class="secondary-pill-btn" onclick="logoutUser()" style="flex: 1; background: rgba(220, 38, 38, 0.15); border-color: rgba(220, 38, 38, 0.4); color: #f87171;" data-i18n="btn_logout">
+          🚪 Log Out
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. VIDEO & VOICE API SETTINGS MODAL -->
+  <div class="modal-overlay" id="videoSettingsModalOverlay">
+    <div class="auth-modal-card" style="max-width: 520px;">
+      <button class="modal-close-btn" onclick="closeVideoSettingsModal()">✕</button>
+
+      <h3 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff; margin-bottom: 0.5rem;" data-i18n="video_modal_title">
+        ⚙️ AI Video &amp; Voice Engine API
+      </h3>
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1.25rem;" data-i18n="video_modal_sub">
+        Vivek साथी provides built-in generative canvas storyboard rendering, plus plug-and-play API hooks for automated external video &amp; voice generation.
+      </p>
+
+      <div class="form-group">
+        <label data-i18n="video_label_pipeline">Video Generation Pipeline:</label>
+        <select id="videoProviderSelect" class="form-input" style="background: #070f1e;">
+          <option value="native_canvas" data-i18n="video_opt_native">Native Kinetic Canvas Generator (Built-in • Instant)</option>
+          <option value="heygen" data-i18n="video_opt_heygen">HeyGen AI Avatar API (External)</option>
+          <option value="did" data-i18n="video_opt_did">D-ID Video Generation API (External)</option>
+          <option value="replicate" data-i18n="video_opt_replicate">Replicate / Stable Video Diffusion (External)</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="video_label_api_key">Optional API Key (For External HeyGen / D-ID / ElevenLabs):</label>
+        <input type="password" id="videoApiKeyInput" class="form-input" placeholder="sk_live_... (Leave blank to use Native Engine)">
+        <small style="font-size: 0.72rem; color: var(--text-dim); display: block; margin-top: 4px;" data-i18n="video_subtext_api_key">
+          Native engine works 100% out of the box with zero API keys required.
+        </small>
+      </div>
+
+      <button class="auth-submit-btn" onclick="saveVideoApiSettings()" data-i18n="video_btn_save">
+        Apply Settings
+      </button>
+    </div>
+  </div>
+
+  <!-- 4. CHECKOUT MODAL -->
+  <div class="modal-overlay" id="checkoutModalOverlay">
+    <div class="auth-modal-card">
+      <button class="modal-close-btn" onclick="closeCheckoutModal()">✕</button>
+      
+      <div style="text-align: center; margin-bottom: 1rem;">
+        <div style="font-size: 2.2rem; margin-bottom: 0.3rem;">⚡</div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff;" id="checkoutPlanTitle" data-i18n="checkout_modal_title">Unlock Vivek साथी Pass</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);" id="checkoutModalSub" data-i18n="checkout_modal_sub">
+          Instant access will be activated on your account
+        </p>
+      </div>
+
+      <div style="background: rgba(255, 255, 255, 0.04); border: 1px solid var(--border-gold); border-radius: 12px; padding: 1rem; margin: 1.25rem 0; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <strong id="modalSummaryPlanName">Sadhak 3-Month Pass</strong>
+          <p style="font-size: 0.75rem; color: var(--text-dim);" data-i18n="checkout_safe_note">One-time safe transaction</p>
+        </div>
+        <div style="font-size: 1.4rem; font-weight: 800; color: var(--gold-light);" id="modalSummaryPrice">
+          ₹249
+        </div>
+      </div>
+
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.6rem; font-weight: 600;" data-i18n="checkout_pay_method_label">
+        Select Payment Method:
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 1.5rem;">
+        <div style="border: 1px solid var(--gold-primary); background: rgba(212,175,55,0.15); border-radius: 8px; padding: 0.85rem 0.5rem; text-align: center; cursor: pointer;">
+          <div style="font-size: 1.3rem;">📱</div>
+          <span style="font-size: 0.8rem; color: #fff;" data-i18n="checkout_pay_upi">UPI / GPay</span>
+        </div>
+        <div style="border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); border-radius: 8px; padding: 0.85rem 0.5rem; text-align: center; cursor: pointer;">
+          <div style="font-size: 1.3rem;">💳</div>
+          <span style="font-size: 0.8rem; color: #fff;" data-i18n="checkout_pay_card">Debit/Credit</span>
+        </div>
+        <div style="border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); border-radius: 8px; padding: 0.85rem 0.5rem; text-align: center; cursor: pointer;">
+          <div style="font-size: 1.3rem;">🏦</div>
+          <span style="font-size: 0.8rem; color: #fff;" data-i18n="checkout_pay_net">Net Banking</span>
+        </div>
+      </div>
+
+      <button class="auth-submit-btn" id="confirmPaymentBtn" onclick="processMockPayment()">
+        Complete Payment (₹249)
+      </button>
+    </div>
+  </div>
+
+  <!-- 5. EDIT MENTORSHIP SESSION MODAL -->
+  <div class="modal-overlay" id="editMentorshipModalOverlay">
+    <div class="auth-modal-card" style="max-width: 540px;">
+      <button class="modal-close-btn" onclick="closeEditMentorshipModal()">✕</button>
+
+      <div style="text-align: center; margin-bottom: 1.25rem;">
+        <div style="font-size: 2rem; margin-bottom: 0.3rem;">✏️</div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff;" data-i18n="edit_session_modal_title">
+          Edit Mentorship Session &amp; Notes
+        </h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted);" data-i18n="edit_session_modal_sub">
+          Update your question or record your personal sadhana reflections
+        </p>
+      </div>
+
+      <input type="hidden" id="editSessionIdInput">
+
+      <div class="form-group">
+        <label data-i18n="label_edit_query">Life Dilemma / Question:</label>
+        <textarea id="editSessionProblemInput" class="form-input" style="min-height: 80px; resize: vertical;"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="label_edit_notes">Your Personal Sadhana Notes / Reflections:</label>
+        <textarea id="editSessionNotesInput" class="form-input" placeholder="e.g. Practiced 10 mins meditation on this lesson..." style="min-height: 100px; resize: vertical;"></textarea>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; margin-top: 1.25rem;">
+        <button class="auth-submit-btn" onclick="saveEditedMentorshipSession()" style="flex: 2;" data-i18n="btn_save_session">
+          💾 Save Changes to Journey
+        </button>
+        <button class="secondary-pill-btn" onclick="closeEditMentorshipModal()" style="flex: 1; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.2); color: #fff; cursor: pointer;">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW PAST MENTORSHIP SESSION DETAILS MODAL -->
+  <div class="modal-overlay" id="viewMentorshipModalOverlay">
+    <div class="auth-modal-card" style="max-width: 620px;">
+      <button class="modal-close-btn" onclick="closeViewMentorshipModal()">✕</button>
+
+      <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;">
+        <span style="font-size: 1.8rem;">📜</span>
+        <div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff; margin: 0;">
+            Mentorship Session Details
+          </h3>
+          <span id="viewSessionDateTag" style="font-size: 0.75rem; color: var(--gold-light);"></span>
+        </div>
+      </div>
+
+      <!-- Dilemma / Problem -->
+      <div style="background: rgba(0,0,0,0.4); border: 1px solid rgba(212,175,55,0.2); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1rem;">
+        <div style="font-size: 0.75rem; color: var(--gold-light); font-weight: 700; text-transform: uppercase; margin-bottom: 0.35rem;">
+          ❓ Aapka Sawal / Life Dilemma:
+        </div>
+        <p id="viewSessionProblemText" style="color: #fff; font-size: 0.95rem; margin: 0; line-height: 1.5; font-weight: 500;"></p>
+      </div>
+
+      <!-- Swami Vivekananda Katha -->
+      <div style="background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: var(--radius-md); padding: 1.15rem; margin-bottom: 1rem;">
+        <div style="font-size: 0.75rem; color: var(--gold-primary); font-weight: 700; text-transform: uppercase; margin-bottom: 0.35rem;">
+          📖 Swami Vivekananda's Matched Katha:
+        </div>
+        <h4 id="viewSessionStoryTitle" style="color: var(--gold-light); font-size: 1.15rem; margin: 0 0 0.5rem 0; font-family: var(--font-heading);"></h4>
+        <p id="viewSessionStoryText" style="color: #e2e8f0; font-size: 0.88rem; line-height: 1.6; margin: 0 0 0.75rem 0;"></p>
+        <div id="viewSessionStoryLesson" style="font-size: 0.82rem; color: #fef08a; background: rgba(0,0,0,0.35); padding: 0.6rem 0.85rem; border-radius: var(--radius-sm); border-left: 2px solid var(--gold-primary);"></div>
+      </div>
+
+      <!-- Slogan & Translation -->
+      <div style="background: rgba(255, 115, 0, 0.08); border: 1px solid rgba(255, 115, 0, 0.3); border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1rem;">
+        <div style="font-family: var(--font-sanskrit); color: var(--gold-light); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem;" id="viewSessionSlogan"></div>
+        <div style="font-size: 0.84rem; color: #cbd5e1; font-style: italic;" id="viewSessionTranslation"></div>
+      </div>
+
+      <!-- Notes if any -->
+      <div id="viewSessionNotesContainer" style="display: none; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 0.85rem; margin-bottom: 1rem;">
+        <div style="font-size: 0.75rem; color: var(--text-dim); font-weight: 700; text-transform: uppercase; margin-bottom: 0.2rem;">📝 Personal Reflection Notes:</div>
+        <div id="viewSessionNotesText" style="color: #cbd5e1; font-size: 0.85rem;"></div>
+      </div>
+
+      <!-- Action Buttons Row in Modal -->
+      <div style="display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.25rem;">
+        <button class="primary-gold-btn" id="viewModalContinueBtn" style="flex: 2; padding: 0.7rem 1rem; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 0.4rem; cursor: pointer;">
+          ▶️ Continue in Vivek Vani
+        </button>
+        <button class="secondary-pill-btn" id="viewModalShareBtn" style="flex: 1.5; background: rgba(16, 185, 129, 0.15); border: 1px solid var(--emerald-glow); color: var(--emerald-glow); padding: 0.7rem 1rem; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 0.4rem; cursor: pointer;">
+          🌐 Share
+        </button>
+        <button class="secondary-pill-btn" id="viewModalDeleteBtn" style="flex: 1; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); color: #f87171; padding: 0.7rem 1rem; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 0.4rem; cursor: pointer;">
+          🗑️ Delete
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHARE MENTORSHIP SESSION MODAL -->
+  <div class="modal-overlay" id="shareMentorshipModalOverlay">
+    <div class="auth-modal-card" style="max-width: 480px;">
+      <button class="modal-close-btn" onclick="closeShareMentorshipModal()">✕</button>
+
+      <div style="text-align: center; margin-bottom: 1.25rem;">
+        <div style="font-size: 2.2rem; margin-bottom: 0.4rem;">🌐</div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff; margin: 0 0 0.3rem 0;">
+          Share Mentorship Wisdom
+        </h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">
+          Swami Vivekananda ke prerna-dayak sandesh ko peers ke saath share karein
+        </p>
+      </div>
+
+      <input type="hidden" id="shareSessionIdInput">
+
+      <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+        <!-- Option 1: Share to Youth Sangam Community -->
+        <button onclick="executeShareToSangam()" class="primary-gold-btn" style="padding: 0.85rem 1.25rem; font-size: 0.9rem; font-weight: 700; display: flex; align-items: center; justify-content: space-between; cursor: pointer; text-align: left;">
+          <div>
+            <div>👥 Share to Youth Sangam</div>
+            <small style="font-weight: 400; opacity: 0.85; font-size: 0.74rem;">Post in peer community feed &amp; earn +20 Karma</small>
+          </div>
+          <span style="font-size: 1.15rem;">⚡ +20</span>
+        </button>
+
+        <!-- Option 2: Share to WhatsApp -->
+        <button onclick="executeShareToWhatsApp()" style="background: rgba(37, 211, 102, 0.15); border: 1px solid #25d366; color: #4ade80; padding: 0.85rem 1.25rem; border-radius: var(--radius-md); font-size: 0.9rem; font-weight: 700; display: flex; align-items: center; justify-content: space-between; cursor: pointer; text-align: left;">
+          <div>
+            <div>📲 Share via WhatsApp</div>
+            <small style="font-weight: 400; opacity: 0.85; font-size: 0.74rem;">Send formatted story &amp; Mahavakya to friends</small>
+          </div>
+          <span style="font-size: 1.2rem;">💬</span>
+        </button>
+
+        <!-- Option 3: Copy to Clipboard -->
+        <button onclick="executeCopyWisdomToClipboard()" style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; padding: 0.85rem 1.25rem; border-radius: var(--radius-md); font-size: 0.9rem; font-weight: 700; display: flex; align-items: center; justify-content: space-between; cursor: pointer; text-align: left;">
+          <div>
+            <div>📋 Copy Wisdom to Clipboard</div>
+            <small style="font-weight: 400; opacity: 0.85; font-size: 0.74rem;">Copy dilemma, story &amp; Sanskrit quote</small>
+          </div>
+          <span style="font-size: 1.2rem;">📑</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. YOUTH SANGAM ACCOUNTS & IDENTITY SWITCHER MODAL -->
+  <div class="modal-overlay" id="communityAccountModalOverlay">
+    <div class="auth-modal-card" style="max-width: 520px; max-height: 90vh; overflow-y: auto;">
+      <button class="modal-close-btn" onclick="closeCommunityAccountModal()">✕</button>
+
+      <div style="text-align: center; margin-bottom: 1.25rem;">
+        <div style="font-size: 2rem; margin-bottom: 0.3rem;">👥</div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff;" data-i18n="comm_acc_modal_title">
+          Youth Sangam Account Switcher
+        </h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted);" data-i18n="comm_acc_modal_sub">
+          Create multiple community personas or switch between your accounts
+        </p>
+      </div>
+
+      <!-- Current Saved Accounts List -->
+      <div style="margin-bottom: 1.5rem;">
+        <h4 style="font-size: 0.88rem; color: var(--gold-light); margin-bottom: 0.6rem; font-weight: 700;">
+          Your Active &amp; Saved Accounts:
+        </h4>
+        <div id="savedAccountsContainer" style="display: flex; flex-direction: column; gap: 0.6rem;">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+
+      <div class="social-auth-divider" style="margin: 1.25rem 0;">➕ CREATE NEW SANGAM IDENTITY</div>
+
+      <!-- Create New Persona Form -->
+      <div class="form-group">
+        <label data-i18n="label_comm_fullname">Display Name:</label>
+        <input type="text" id="commAccNameInput" class="form-input" placeholder="e.g. Dhairya Kumar">
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="label_comm_username">Unique Sangam Handle:</label>
+        <input type="text" id="commAccUsernameInput" class="form-input" placeholder="e.g. dhairya_guide (appears as @dhairya_guide)">
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="label_comm_avatar">Select Avatar:</label>
+        <div style="display: flex; gap: 0.65rem; font-size: 1.5rem; cursor: pointer;">
+          <span onclick="selectCommAvatar('🦁')">🦁</span>
+          <span onclick="selectCommAvatar('🧘‍♂️')">🧘‍♂️</span>
+          <span onclick="selectCommAvatar('🔥')">🔥</span>
+          <span onclick="selectCommAvatar('🪷')">🪷</span>
+          <span onclick="selectCommAvatar('⚔️')">⚔️</span>
+          <span onclick="selectCommAvatar('🌟')">🌟</span>
+        </div>
+        <div style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">
+          Selected: <strong id="selectedCommAvatarDisplay" style="color: var(--gold-light); font-size: 1rem;">🦁</strong>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label data-i18n="label_comm_bio">Short Bio / Sangam Role:</label>
+        <input type="text" id="commAccBioInput" class="form-input" placeholder="e.g. Helping peers prepare with calm and discipline">
+      </div>
+
+      <button class="auth-submit-btn" onclick="submitCreateCommunityAccount()" data-i18n="btn_create_comm_account">
+        🚀 Create &amp; Switch to Account (+350 Karma)
+      </button>
+
+    </div>
+  </div>
+
+  <!-- 7. REPORT CONTENT & DIRTY COMMENT MODAL -->
+  <div class="modal-overlay" id="reportModalOverlay">
+    <div class="modal-card" style="max-width: 480px; border-color: rgba(239, 68, 68, 0.4); box-shadow: 0 20px 45px rgba(220,38,38,0.25);">
+      <button class="modal-close-btn" onclick="closeReportModal()">&times;</button>
+      
+      <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.4rem;">
+        <span style="font-size: 1.5rem;">🚩</span>
+        <div>
+          <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: #fca5a5; margin: 0;">Report Inappropriate Content</h3>
+          <p style="font-size: 0.76rem; color: var(--text-dim); margin: 2px 0 0 0;">Protect Youth Sangam purity and block defaulters</p>
+        </div>
+      </div>
+
+      <input type="hidden" id="reportTargetType" value="post">
+      <input type="hidden" id="reportTargetId" value="">
+      <input type="hidden" id="reportAuthorUsername" value="">
+
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-md); padding: 0.75rem 1rem; margin: 1rem 0;">
+        <div style="font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.2rem;">REPORTING CONTENT BY:</div>
+        <strong style="color: var(--gold-light); font-size: 0.85rem;" id="reportTargetAuthorLabel">@user</strong>
+        <p style="font-size: 0.8rem; color: #cbd5e1; font-style: italic; margin-top: 0.35rem; max-height: 60px; overflow-y: auto;" id="reportTargetSnippet">"..."</p>
+      </div>
+
+      <div class="form-group">
+        <label>Reason for Flagging:</label>
+        <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.4rem;">
+          <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: #fca5a5; cursor: pointer; background: rgba(220,38,38,0.1); padding: 0.5rem 0.75rem; border-radius: 6px; border: 1px solid rgba(239,68,68,0.3);">
+            <input type="radio" name="reportReasonChoice" value="dirty_language" checked>
+            <span>🤬 <strong>Dirty / Vulgar / Abusive Words</strong> (Gaali, Profanity, Slurs)</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: #e2e8f0; cursor: pointer; background: rgba(255,255,255,0.03); padding: 0.5rem 0.75rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.08);">
+            <input type="radio" name="reportReasonChoice" value="defaulter">
+            <span>⚠️ <strong>Community Defaulter</strong> (Exploitative, fake answers, spamming)</span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: #e2e8f0; cursor: pointer; background: rgba(255,255,255,0.03); padding: 0.5rem 0.75rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.08);">
+            <input type="radio" name="reportReasonChoice" value="harassment">
+            <span>🚫 <strong>Hate Speech / Personal Harassment</strong></span>
+          </label>
+          <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: #e2e8f0; cursor: pointer; background: rgba(255,255,255,0.03); padding: 0.5rem 0.75rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.08);">
+            <input type="radio" name="reportReasonChoice" value="spam">
+            <span>📢 <strong>Spam / External Promotion</strong></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Additional Context (Optional):</label>
+        <input type="text" id="reportDetailsInput" class="form-input" placeholder="e.g. Inappropriate words directed at peers">
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; margin-top: 1.25rem;">
+        <button class="auth-submit-btn" onclick="submitContentReport()" style="background: linear-gradient(135deg, #dc2626, #b91c1c); margin: 0; flex: 1;">
+          🚩 Submit Report &amp; Quarantine
+        </button>
+        <button class="secondary-pill-btn" onclick="closeReportModal()" style="border-radius: var(--radius-md); padding: 0.7rem 1.2rem; cursor: pointer;">
+          Cancel
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 8. COMMUNITY GUARDIAN & DEFAULTERS MODAL -->
+  <div class="modal-overlay" id="guardianModalOverlay">
+    <div class="modal-card guardian-modal-card" style="max-width: 860px; max-height: 90vh; overflow-y: auto; border-color: rgba(212,175,55,0.35); box-shadow: 0 25px 60px rgba(0,0,0,0.85);">
+      <button class="modal-close-btn" onclick="closeGuardianModal()">&times;</button>
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <div style="width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #991b1b, #d4af37); display: flex; align-items: center; justify-content: center; font-size: 1.4rem;">
+            🛡️
+          </div>
+          <div>
+            <h2 style="font-family: var(--font-heading); font-size: 1.4rem; color: #fff; margin: 0;">
+              Sangam Dharma Rakshak Hub
+            </h2>
+            <p style="font-size: 0.78rem; color: var(--gold-light); margin: 2px 0 0 0;">
+              Defaulter Blocker, Dirty Comments Filter &amp; Community Purity Monitor
+            </p>
+          </div>
+        </div>
+        <button onclick="loadGuardianData()" class="secondary-pill-btn" style="background: rgba(212,175,55,0.12); border: 1px solid var(--gold-primary); color: var(--gold-light); font-size: 0.78rem; padding: 0.35rem 0.85rem; border-radius: var(--radius-full); cursor: pointer;">
+          🔄 Refresh Data
+        </button>
+      </div>
+
+      <!-- Live Community Purity Metrics -->
+      <div class="guardian-stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+        <div class="guardian-stat-box" style="background: rgba(220,38,38,0.12); border: 1px solid rgba(239,68,68,0.3); border-radius: var(--radius-md); padding: 1rem; text-align: center;">
+          <div style="font-size: 1.6rem; font-weight: 800; color: #f87171;" id="statTotalBlocked">0</div>
+          <div style="font-size: 0.75rem; color: #fca5a5; font-weight: 600; text-transform: uppercase;">Blocked Defaulters</div>
+        </div>
+        <div class="guardian-stat-box" style="background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.3); border-radius: var(--radius-md); padding: 1rem; text-align: center;">
+          <div style="font-size: 1.6rem; font-weight: 800; color: #fbbf24;" id="statDirtyStopped">0</div>
+          <div style="font-size: 0.75rem; color: #fde68a; font-weight: 600; text-transform: uppercase;">Dirty Comments Stopped</div>
+        </div>
+        <div class="guardian-stat-box" style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); border-radius: var(--radius-md); padding: 1rem; text-align: center;">
+          <div style="font-size: 1.6rem; font-weight: 800; color: var(--emerald-glow);" id="statPurityScore">99.8%</div>
+          <div style="font-size: 0.75rem; color: #6ee7b7; font-weight: 600; text-transform: uppercase;">Community Purity Score</div>
+        </div>
+      </div>
+
+      <!-- Quick Action: Manual Block Defaulter -->
+      <div style="background: rgba(7, 15, 30, 0.9); border: 1px solid var(--border-gold); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1.5rem;">
+        <h4 style="color: var(--gold-light); font-size: 0.95rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.45rem;">
+          <span>🚫</span> <span>Instant Defaulter &amp; Abusive User Blocker</span>
+        </h4>
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+          <div style="flex: 1; min-width: 180px;">
+            <input type="text" id="guardianBlockHandleInput" class="form-input" placeholder="Enter @username to block (e.g. toxic_user)" style="padding: 0.55rem 0.85rem; font-size: 0.85rem;">
+          </div>
+          <div style="flex: 1; min-width: 180px;">
+            <select id="guardianBlockReasonSelect" class="form-input" style="padding: 0.55rem 0.85rem; font-size: 0.85rem;">
+              <option value="Dirty Comments & Vulgarity">🤬 Dirty Comments &amp; Vulgarity</option>
+              <option value="Karma Defaulter & Exploitative Activity">⚠️ Karma Defaulter &amp; Exploit</option>
+              <option value="Harassment and Abusive Conduct">🚫 Harassment &amp; Abusive Conduct</option>
+              <option value="Spam / Commercial Ads">📢 Spam / Commercial Ads</option>
+            </select>
+          </div>
+          <button onclick="guardianSubmitManualBlock()" style="background: linear-gradient(135deg, #dc2626, #991b1b); border: none; color: #fff; font-weight: 700; padding: 0.6rem 1.25rem; border-radius: var(--radius-md); cursor: pointer; font-size: 0.82rem;">
+            🚫 Block User
+          </button>
+        </div>
+        <small style="font-size: 0.72rem; color: var(--text-dim); display: block; margin-top: 0.45rem;">
+          Blocking a user revokes their community privileges and purges all their posts and solutions from public feeds instantly.
+        </small>
+      </div>
+
+      <!-- Sub Tabs: 1. Blocked Defaulters Registry | 2. Pending Reports Queue -->
+      <div style="display: flex; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.5rem; margin-bottom: 1rem;">
+        <button id="guardianTabBtnDefaulters" class="comm-filter-btn active" onclick="switchGuardianTab('defaulters')">
+          🚫 Blocked Defaulters (<span id="guardianBlockedCountBadge">0</span>)
+        </button>
+        <button id="guardianTabBtnReports" class="comm-filter-btn" onclick="switchGuardianTab('reports')">
+          🚩 Flagged Reports (<span id="guardianReportsCountBadge">0</span>)
+        </button>
+      </div>
+
+      <!-- Tab 1: Defaulters Table -->
+      <div id="guardianTabDefaulters">
+        <div id="guardianDefaultersList" style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <p style="color: var(--text-dim); font-size: 0.85rem; text-align: center; padding: 1.5rem 0;">Loading defaulters registry...</p>
+        </div>
+      </div>
+
+      <!-- Tab 2: Flagged Reports Queue -->
+      <div id="guardianTabReports" style="display: none;">
+        <div id="guardianReportsList" style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <p style="color: var(--text-dim); font-size: 0.85rem; text-align: center; padding: 1.5rem 0;">No flagged content in queue.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+</body>
+</html>
