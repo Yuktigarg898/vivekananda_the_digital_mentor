@@ -1,4 +1,4 @@
-# 🧘 VivekSaarthi — AI-Powered Reflective Mentor
+# 🧘 VivekSaathi — AI-Powered Reflective Mentor
 
 > **“Arise, awake, and stop not till the goal is reached.” — Swami Vivekananda**
 
@@ -32,7 +32,7 @@ Existing solutions often provide generic motivational quotes or chatbot response
 
 # 💡 Our Solution
 
-**VivekSaarthi** creates a personalized reflective experience around the user's current situation.
+**VivekSaathi** creates a personalized reflective experience around the user's current situation.
 
 The system:
 
@@ -116,7 +116,7 @@ and generates guidance accordingly.
 
 > “I worked hard but still failed my examination.”
 
-**VivekSaarthi:**
+**VivekSaathi:**
 
 > Failure does not define your ability. Use the experience to understand where you can improve, then return to the effort with greater strength.
 
