@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login &amp; Register | Vivek साथी - AI Mentorship &amp; Youth Sangam</title>
+  <meta name="description" content="Sign in or create your unique account for Vivek Saarthi - AI Mentorship with Swami Vivekananda's stories, Sanskrit slogans, baritone voice & Youth Sangam.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Rozha+One&family=Yatra+One&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('vivek_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+  <style>
+    /* Dedicated Login Page Layout Styles */
+    body {
+      min-height: 100vh;
+      background: #070f1e;
+      background-image: 
+        radial-gradient(circle at 15% 25%, rgba(212, 175, 55, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(255, 115, 0, 0.06) 0%, transparent 45%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem 1.25rem;
+      position: relative;
+      overflow-x: hidden;
+      overflow-y: auto;
+      box-sizing: border-box;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .login-container-wrapper {
+      max-width: 1140px;
+      width: 100%;
+      background: rgba(11, 26, 48, 0.85);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+      display: grid;
+      grid-template-columns: 0.85fr 1.25fr;
+      overflow: hidden;
+      margin: auto 0;
+      animation: fadeIn 0.4s ease;
+    }
+
+    /* Left Side: Spiritual Hero Showcase */
+    .login-hero-showcase {
+      background: linear-gradient(145deg, rgba(7, 15, 30, 0.95), rgba(19, 42, 82, 0.85));
+      border-right: 1px solid rgba(212, 175, 55, 0.2);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .login-hero-showcase::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.15), transparent 70%);
+      pointer-events: none;
+    }
+
+    .login-brand-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      text-decoration: none;
+    }
+
+    .login-brand-logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      border: 2px solid var(--gold-primary);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    }
+
+    .login-brand-title {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .login-brand-title span {
+      color: var(--gold-light);
+      font-family: var(--font-hindi);
+    }
+
+    .login-brand-sub {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      letter-spacing: 0.5px;
+    }
+
+    .login-portrait-card {
+      text-align: center;
+      margin: 1rem 0;
+      background: rgba(7, 15, 30, 0.6);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-portrait-img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--gold-primary);
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.45);
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .login-portrait-img:hover {
+      transform: scale(1.04);
+    }
+
+    .login-sanskrit-quote {
+      font-family: var(--font-sanskrit);
+      font-size: 1.25rem;
+      color: var(--gold-light);
+      line-height: 1.5;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+    }
+
+    .login-quote-sub {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      font-style: italic;
+    }
+
+    .login-perks-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+    }
+
+    .login-perks-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .login-perks-list span {
+      color: var(--emerald-glow);
+    }
+
+    /* Right Side: Auth Form Container */
+    .login-form-side {
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .login-form-side .form-input {
+      padding: 0.88rem 1.15rem;
+      font-size: 0.98rem;
+    }
+
+    .login-form-side .auth-submit-btn {
+      padding: 0.95rem;
+      font-size: 1rem;
+    }
+
+    .login-welcome-title {
+      font-family: var(--font-heading);
+      font-size: 1.7rem;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+
+    .login-welcome-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Already Logged In Banner */
+    .already-logged-banner {
+      display: none;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid var(--emerald-glow);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .login-container-wrapper {
+        grid-template-columns: 1fr;
+        max-width: 540px;
+      }
+      .login-hero-showcase {
+        display: none;
+      }
+      .login-form-side {
+        padding: 2.2rem 1.75rem;
+      }
+    }
+
+    /* Light Theme Overrides for Login Page */
+    [data-theme="light"] body {
+      background: #fdfbf7;
+      background-image: 
+        radial-gradient(circle at 15% 25%, rgba(234, 88, 12, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(217, 119, 6, 0.08) 0%, transparent 45%);
+      color: #1c1917;
+    }
+
+    [data-theme="light"] .login-container-wrapper {
+      background: #ffffff;
+      border-color: rgba(217, 119, 6, 0.28);
+      box-shadow: 0 25px 70px rgba(120, 53, 15, 0.12);
+    }
+
+    [data-theme="light"] .login-hero-showcase {
+      background: linear-gradient(145deg, #fff9f0, #fef3c7);
+      border-right-color: rgba(217, 119, 6, 0.2);
+    }
+
+    [data-theme="light"] .login-brand-title {
+      color: #1c1917;
+    }
+
+    [data-theme="light"] .login-hero-quote {
+      color: #7c2d12;
+      border-left-color: #ea580c;
+      background: rgba(234, 88, 12, 0.06);
+    }
+
+    [data-theme="light"] .hero-feature-item {
+      color: #44403c;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Login Card Container -->
+  <main class="login-container-wrapper" id="loginMainWrapper">
+    
+    <!-- LEFT: SPIRITUAL SHOWCASE & VIVEKANANDA HIGHLIGHTS -->
+    <aside class="login-hero-showcase">
+      <div>
+        <a href="index.html" class="login-brand-header">
+          <img src="assets/logo.jpg" alt="Vivek साथी Logo" class="login-brand-logo">
+          <div>
+            <div class="login-brand-title">Vivek <span>साथी</span></div>
+            <div class="login-brand-sub">AI Mentorship &amp; Youth Sangam</div>
+          </div>
+        </a>
+
+        <div class="login-portrait-card">
+          <img src="assets/vivekananda.jpg" alt="Swami Vivekananda" class="login-portrait-img">
+          <div class="login-sanskrit-quote">
+            "उत्तिष्ठत जाग्रत प्राप्य वरान्निबोधत।"
+          </div>
+          <div class="login-quote-sub">
+            — Arise, awake, and stop not till the goal is reached!
+          </div>
+        </div>
+      </div>
+
+      <ul class="login-perks-list">
+        <li><span>✓</span> <strong>350 Free Karma Credits</strong> gifted upon sign in</li>
+        <li><span>✓</span> Authentic stories from Swami Vivekananda's life</li>
+        <li><span>✓</span> Deep Baritone AI Voice &amp; 1:30 min Video Capsules</li>
+        <li><span>✓</span> Unique Sangam Handle for youth discussions</li>
+        <li><span>✓</span> Past guidance journey permanently synced</li>
+      </ul>
+    </aside>
+
+    <!-- RIGHT: AUTHENTICATION FORM & MULTI-LOGIN TABS -->
+    <section class="login-form-side">
+      
+      <!-- Already logged in notification -->
+      <div class="already-logged-banner" id="alreadyLoggedInBanner">
+        <p style="color: #fff; font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem;">
+          🌟 Welcome back, <span id="currentLoggedInName">Seeker</span>!
+        </p>
+        <p style="font-size: 0.78rem; color: var(--emerald-glow); margin-bottom: 0.8rem;">
+          You are already signed in with @<span id="currentLoggedInHandle">user</span> (<span id="currentLoggedInKarma">350</span> Karma)
+        </p>
+        <div style="display: flex; gap: 0.6rem; justify-content: center;">
+          <a href="index.html" class="auth-submit-btn" style="text-decoration: none; padding: 0.5rem 1.25rem; font-size: 0.85rem; width: auto; margin: 0;">
+            Enter Portal ➔
+          </a>
+          <button onclick="logoutFromLoginPage()" class="secondary-pill-btn" style="background: rgba(220,38,38,0.2); border: 1px solid rgba(220,38,38,0.4); color: #f87171; font-size: 0.85rem; padding: 0.5rem 1rem; border-radius: var(--radius-md); cursor: pointer;">
+            Switch Account
+          </button>
+        </div>
+      </div>
+
+      <div id="authFormsContainer">
+        <h1 class="login-welcome-title">Sign in to Vivek साथी</h1>
+        <p class="login-welcome-sub">
+          Access your unique spiritual mentor, AI video capsules &amp; Youth Sangam.
+        </p>
+
+        <!-- Auth Tabs Header -->
+        <div class="auth-tabs-header">
+          <button class="auth-tab-link active" id="tabBtnMobile" onclick="switchLoginTab('mobile')">
+            📱 Mobile OTP
+          </button>
+          <button class="auth-tab-link" id="tabBtnPassword" onclick="switchLoginTab('password')">
+            🔑 Password
+          </button>
+          <button class="auth-tab-link" id="tabBtnOtp" onclick="switchLoginTab('otp')">
+            📧 Email OTP
+          </button>
+          <button class="auth-tab-link" id="tabBtnRegister" onclick="switchLoginTab('register')">
+            📝 Register
+          </button>
+        </div>
+
+        <!-- MODE 1: MOBILE NUMBER OTP -->
+        <div id="loginPanelMobile">
+          <div class="form-group">
+            <label>10-Digit Mobile Number:</label>
+            <div class="otp-send-row">
+              <span style="background: rgba(212,175,55,0.15); border: 1px solid var(--border-gold); padding: 0.65rem 0.85rem; border-radius: var(--radius-md); color: var(--gold-light); font-weight: 700;">+91</span>
+              <input type="tel" id="loginMobileInput" class="form-input" placeholder="e.g. 9876543210" maxlength="10">
+              <button class="send-otp-btn" id="sendMobOtpBtn" onclick="requestMobileOtp()">
+                Send OTP
+              </button>
+            </div>
+            <small style="font-size: 0.72rem; color: var(--text-dim); display: block; margin-top: 4px;">
+              📱 Instant verification code dispatched with auto-preview fill
+            </small>
+          </div>
+
+          <div class="form-group" id="mobOtpGroup" style="display: none;">
+            <label>Enter 6-Digit OTP:</label>
+            <input type="text" id="loginMobOtpCodeInput" class="form-input" placeholder="Enter 6-digit code (e.g. 123456)" maxlength="6">
+          </div>
+
+          <button class="auth-submit-btn" id="verifyMobOtpBtn" onclick="verifyMobileOtp()" style="display: none;">
+            Verify Mobile OTP &amp; Enter Portal
+          </button>
+        </div>
+
+        <!-- MODE 2: EMAIL / USERNAME / MOBILE + PASSWORD -->
+        <div id="loginPanelPassword" style="display: none;">
+          <div class="form-group">
+            <label>Email, Mobile, or @Username:</label>
+            <input type="text" id="loginIdentifierInput" class="form-input" placeholder="Enter email, mobile or username">
+          </div>
+          <div class="form-group">
+            <label>Password:</label>
+            <input type="password" id="loginPasswordInput" class="form-input" placeholder="Enter your password">
+          </div>
+          <button class="auth-submit-btn" onclick="submitPasswordLogin()">
+            Login to Portal
+          </button>
+        </div>
+
+        <!-- MODE 3: EMAIL OTP (GMAIL SMTP DISPATCHER) -->
+        <div id="loginPanelOtp" style="display: none;">
+          <div class="form-group">
+            <label>Your Email Address:</label>
+            <div class="otp-send-row">
+              <input type="email" id="loginEmailTargetInput" class="form-input" placeholder="e.g. yourname@gmail.com">
+              <button class="send-otp-btn" id="sendEmailOtpBtn" onclick="requestEmailOtp()">
+                Send OTP
+              </button>
+            </div>
+            <small style="font-size: 0.72rem; color: var(--text-dim); display: block; margin-top: 4px;">
+              📧 Real verification code emailed instantly to your inbox
+            </small>
+          </div>
+
+          <div class="form-group" id="emailOtpGroup" style="display: none;">
+            <label>Enter 6-Digit Email OTP:</label>
+            <input type="text" id="loginEmailOtpCodeInput" class="form-input" placeholder="Enter 6-digit code (e.g. 123456)" maxlength="6">
+          </div>
+
+          <button class="auth-submit-btn" id="verifyEmailOtpBtn" onclick="verifyEmailOtp()" style="display: none;">
+            Verify OTP &amp; Enter Portal
+          </button>
+        </div>
+
+        <!-- MODE 4: NEW REGISTRATION WITH UNIQUE HANDLE -->
+        <div id="loginPanelRegister" style="display: none;">
+          <div class="form-group">
+            <label>Full Name:</label>
+            <input type="text" id="regFullNameInput" class="form-input" placeholder="e.g. Aarav Sharma">
+          </div>
+          <div class="form-group">
+            <label>Unique Sangam Handle (@username):</label>
+            <input type="text" id="regHandleInput" class="form-input" placeholder="e.g. aarav_sharma (will appear as @aarav_sharma)">
+            <small style="font-size: 0.72rem; color: var(--text-dim);">Your unique public identity in community discussions.</small>
+          </div>
+          <div class="form-group">
+            <label>Email Address:</label>
+            <input type="email" id="regEmailAddressInput" class="form-input" placeholder="e.g. aarav@gmail.com">
+          </div>
+          <div class="form-group">
+            <label>Mobile Number (Optional):</label>
+            <input type="tel" id="regMobileNumberInput" class="form-input" placeholder="e.g. 9876543210" maxlength="10">
+          </div>
+          <div class="form-group">
+            <label>Password:</label>
+            <input type="password" id="regPasswordCodeInput" class="form-input" placeholder="At least 6 characters">
+          </div>
+          <button class="auth-submit-btn" onclick="submitNewRegistration()">
+            Register Unique Account (+350 Karma)
+          </button>
+        </div>
+
+        <div class="social-auth-divider">OR</div>
+
+        <!-- UNIVERSAL GOOGLE SIGN-IN FOR ANY ACCOUNT -->
+        <button class="google-auth-btn" onclick="openGoogleDialog()">
+          <span style="font-size: 1.15rem;">🌐</span> Continue with Google (Any Account)
+        </button>
+
+        <!-- CONTINUE AS GUEST OPTION -->
+        <div style="text-align: center; margin-top: 1.25rem;">
+          <a href="index.html" style="color: var(--gold-light); font-size: 0.85rem; text-decoration: underline;">
+            👉 Continue as Guest Seeker (Preview Mode)
+          </a>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- GOOGLE ACCOUNT MODAL FOR ANY GMAIL -->
+  <div class="modal-overlay" id="googleLoginModalOverlay">
+    <div class="auth-modal-card" style="max-width: 440px;">
+      <button class="modal-close-btn" onclick="closeGoogleDialog()">✕</button>
+
+      <div style="text-align: center; margin-bottom: 1.25rem;">
+        <div style="font-size: 2.2rem; margin-bottom: 0.3rem;">🌐</div>
+        <h3 style="font-family: var(--font-heading); font-size: 1.35rem; color: #fff;">
+          Sign in with Google
+        </h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted);">
+          Choose or enter any Google account to sign in or register
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label>Your Name:</label>
+        <input type="text" id="gNameInput" class="form-input" placeholder="e.g. Yukti Garg">
+      </div>
+
+      <div class="form-group">
+        <label>Google Email Address:</label>
+        <input type="email" id="gEmailInput" class="form-input" placeholder="e.g. any_user@gmail.com">
+      </div>
+
+      <button class="auth-submit-btn" onclick="submitGoogleLogin()">
+        Continue as Google User
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Client-side Logic for Login Page -->
+  <script>
+    let currentPendingMobile = '';
+    let currentPendingEmail = '';
+
+    // Check existing session on load
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        const user = JSON.parse(localStorage.getItem('vivek_user') || 'null');
+        if (user && user.name) {
+          document.getElementById('alreadyLoggedInBanner').style.display = 'block';
+          document.getElementById('currentLoggedInName').innerText = user.name;
+          document.getElementById('currentLoggedInHandle').innerText = user.username || 'user';
+          document.getElementById('currentLoggedInKarma').innerText = user.karma_points || '350';
+        }
+      } catch (e) {}
+    });
+
+    function logoutFromLoginPage() {
+      localStorage.removeItem('vivek_user');
+      document.getElementById('alreadyLoggedInBanner').style.display = 'none';
+      showToast('Session cleared. Choose an account to log in.');
+    }
+
+    function switchLoginTab(mode) {
+      document.querySelectorAll('.auth-tab-link').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('loginPanelMobile').style.display = 'none';
+      document.getElementById('loginPanelPassword').style.display = 'none';
+      document.getElementById('loginPanelOtp').style.display = 'none';
+      document.getElementById('loginPanelRegister').style.display = 'none';
+
+      if (mode === 'mobile') {
+        document.getElementById('tabBtnMobile').classList.add('active');
+        document.getElementById('loginPanelMobile').style.display = 'block';
+      } else if (mode === 'password') {
+        document.getElementById('tabBtnPassword').classList.add('active');
+        document.getElementById('loginPanelPassword').style.display = 'block';
+      } else if (mode === 'otp') {
+        document.getElementById('tabBtnOtp').classList.add('active');
+        document.getElementById('loginPanelOtp').style.display = 'block';
+      } else if (mode === 'register') {
+        document.getElementById('tabBtnRegister').classList.add('active');
+        document.getElementById('loginPanelRegister').style.display = 'block';
+      }
+    }
+
+    // Toast helper
+    function showToast(msg, type = 'info') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.innerHTML = `<span>${type === 'error' ? '⚠️' : '✨'}</span> <span>${msg}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    // Confetti effect
+    function triggerConfetti() {
+      const colors = ['#ff7300', '#d4af37', '#f5cf62', '#10b981', '#132a52'];
+      for (let i = 0; i < 30; i++) {
+        const piece = document.createElement('div');
+        piece.style.position = 'fixed';
+        piece.style.top = '10%';
+        piece.style.left = `${Math.random() * 80 + 10}%`;
+        piece.style.width = `${Math.random() * 8 + 6}px`;
+        piece.style.height = `${Math.random() * 12 + 6}px`;
+        piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.zIndex = '9999';
+        piece.style.pointerEvents = 'none';
+        piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+        piece.style.transition = 'all 1.5s cubic-bezier(0.25, 1, 0.5, 1)';
+        document.body.appendChild(piece);
+        setTimeout(() => {
+          piece.style.top = `${Math.random() * 60 + 40}%`;
+          piece.style.opacity = '0';
+          piece.style.transform = `translate(${Math.random() * 100 - 50}px, 200px) rotate(${Math.random() * 720}deg)`;
+        }, 20);
+        setTimeout(() => piece.remove(), 1600);
+      }
+    }
+
+    // Success Redirection
+    function handleSuccessfulLogin(user) {
+      localStorage.setItem('vivek_user', JSON.stringify(user));
+      const karmaVal = user.karma_points !== undefined ? user.karma_points : 350;
+      localStorage.setItem('vivek_karma', karmaVal.toString());
+
+      // Save to accounts list for switching
+      try {
+        let accounts = JSON.parse(localStorage.getItem('vivek_accounts') || '[]');
+        const idx = accounts.findIndex(a => (user.id && a.id === user.id) || (user.username && a.username === user.username));
+        if (idx >= 0) accounts[idx] = user;
+        else accounts.push(user);
+        localStorage.setItem('vivek_accounts', JSON.stringify(accounts));
+      } catch (e) {}
+
+      triggerConfetti();
+      showToast(`🎉 Pranaam ${user.name}! Redirecting to Vivek साथी Portal...`);
+
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 700);
+    }
+
+    // 1. Mobile OTP
+    async function requestMobileOtp() {
+      const mobile = (document.getElementById('loginMobileInput')?.value || '').trim().replace(/[^0-9]/g, '');
+      const btn = document.getElementById('sendMobOtpBtn');
+
+      if (!mobile || mobile.length < 10) {
+        showToast('⚠️ Please enter a valid 10-digit mobile number!', 'error');
+        return;
+      }
+
+      btn.innerText = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/auth/send-mobile-otp', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ mobile: mobile })
+        });
+        const data = await res.json();
+        btn.innerText = 'Sent ✓';
+        btn.disabled = false;
+
+        if (data.status === 'success') {
+          currentPendingMobile = mobile;
+          document.getElementById('mobOtpGroup').style.display = 'block';
+          document.getElementById('verifyMobOtpBtn').style.display = 'block';
+          showToast(data.message || `OTP dispatched to +91-${mobile}!`);
+
+          if (data.otp_preview) {
+            const input = document.getElementById('loginMobOtpCodeInput');
+            if (input) {
+              input.value = data.otp_preview;
+              input.focus();
+            }
+          }
+        } else {
+          showToast(data.message || 'Failed to send OTP', 'error');
+        }
+      } catch (err) {
+        btn.innerText = 'Send OTP';
+        btn.disabled = false;
+        showToast('Network error while requesting Mobile OTP', 'error');
+      }
+    }
+
+    async function verifyMobileOtp() {
+      const otp = (document.getElementById('loginMobOtpCodeInput')?.value || '').trim();
+      const mobile = currentPendingMobile || (document.getElementById('loginMobileInput')?.value || '').trim().replace(/[^0-9]/g, '');
+
+      if (!otp || otp.length !== 6) {
+        showToast('⚠️ Enter 6-digit OTP code!', 'error');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/auth/verify-mobile-otp', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ mobile: mobile, otp_code: otp })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          handleSuccessfulLogin(data.user);
+        } else {
+          showToast(data.message || 'Invalid or expired OTP', 'error');
+        }
+      } catch (err) {
+        showToast('Verification failed', 'error');
+      }
+    }
+
+    // 2. Password Login
+    async function submitPasswordLogin() {
+      const id = (document.getElementById('loginIdentifierInput')?.value || '').trim().toLowerCase();
+      const pwd = (document.getElementById('loginPasswordInput')?.value || '').trim();
+
+      if (!id || !pwd) {
+        showToast('⚠️ Enter Email/Username and Password!', 'error');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ identifier: id, password: pwd })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          handleSuccessfulLogin(data.user);
+        } else {
+          showToast(data.message || 'Invalid credentials', 'error');
+        }
+      } catch (err) {
+        showToast('Login error', 'error');
+      }
+    }
+
+    // 3. Email OTP
+    async function requestEmailOtp() {
+      const email = (document.getElementById('loginEmailTargetInput')?.value || '').trim().toLowerCase();
+      const btn = document.getElementById('sendEmailOtpBtn');
+
+      if (!email || !email.includes('@')) {
+        showToast('⚠️ Valid email address required!', 'error');
+        return;
+      }
+
+      btn.innerText = 'Sending...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/auth/send-otp', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
+        });
+        const data = await res.json();
+        btn.innerText = 'Sent ✓';
+        btn.disabled = false;
+
+        if (data.status === 'success') {
+          currentPendingEmail = email;
+          document.getElementById('emailOtpGroup').style.display = 'block';
+          document.getElementById('verifyEmailOtpBtn').style.display = 'block';
+          showToast(data.message || `OTP dispatched to ${email}!`);
+
+          if (data.otp_preview) {
+            const input = document.getElementById('loginEmailOtpCodeInput');
+            if (input) input.value = data.otp_preview;
+          }
+        } else {
+          showToast(data.message || 'Failed to send OTP', 'error');
+        }
+      } catch (err) {
+        btn.innerText = 'Send OTP';
+        btn.disabled = false;
+        showToast('Network error while requesting Email OTP', 'error');
+      }
+    }
+
+    async function verifyEmailOtp() {
+      const otp = (document.getElementById('loginEmailOtpCodeInput')?.value || '').trim();
+      const email = currentPendingEmail || (document.getElementById('loginEmailTargetInput')?.value || '').trim().toLowerCase();
+
+      if (!otp || otp.length !== 6) {
+        showToast('⚠️ Enter 6-digit OTP code!', 'error');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/auth/verify-otp', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, otp_code: otp })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          handleSuccessfulLogin(data.user);
+        } else {
+          showToast(data.message || 'Invalid or expired OTP', 'error');
+        }
+      } catch (err) {
+        showToast('Verification failed', 'error');
+      }
+    }
+
+    // 4. Register
+    async function submitNewRegistration() {
+      const name = (document.getElementById('regFullNameInput')?.value || '').trim();
+      const username = (document.getElementById('regHandleInput')?.value || '').trim().toLowerCase();
+      const email = (document.getElementById('regEmailAddressInput')?.value || '').trim().toLowerCase();
+      const mobile = (document.getElementById('regMobileNumberInput')?.value || '').trim().replace(/[^0-9]/g, '');
+      const pwd = (document.getElementById('regPasswordCodeInput')?.value || '').trim();
+
+      if (!name || !email || !pwd) {
+        showToast('⚠️ Full Name, Email, and Password required!', 'error');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name,
+            username: username,
+            email: email,
+            mobile: mobile,
+            password: pwd
+          })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          handleSuccessfulLogin(data.user);
+        } else {
+          showToast(data.message || 'Registration failed', 'error');
+        }
+      } catch (err) {
+        showToast('Error registering account', 'error');
+      }
+    }
+
+    // 5. Google Auth Dialog
+    function openGoogleDialog() {
+      document.getElementById('googleLoginModalOverlay')?.classList.add('open');
+    }
+
+    function closeGoogleDialog() {
+      document.getElementById('googleLoginModalOverlay')?.classList.remove('open');
+    }
+
+    async function submitGoogleLogin() {
+      const name = (document.getElementById('gNameInput')?.value || '').trim() || 'Google Seeker';
+      const email = (document.getElementById('gEmailInput')?.value || '').trim().toLowerCase();
+
+      if (!email || !email.includes('@')) {
+        showToast('⚠️ Valid Google email required!', 'error');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/auth/google', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: name, email: email })
+        });
+        const data = await res.json();
+        if (data.status === 'success') {
+          closeGoogleDialog();
+          handleSuccessfulLogin(data.user);
+        } else {
+          showToast(data.message || 'Google Auth failed', 'error');
+        }
+      } catch (err) {
+        showToast('Error connecting with Google', 'error');
+      }
+    }
+  </script>
+</body>
+</html>
